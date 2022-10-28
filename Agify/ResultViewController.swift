@@ -6,3 +6,21 @@
 //
 
 import Foundation
+import UIKit
+import SnapKit
+
+
+class ResultViewController: UIViewController {
+    
+    
+    
+    override func viewDidLoad() {
+        initialize(age: ageRecieved)
+    }
+    
+    func initialize(age: Int) {
+        
+        
+        
+    }
+}

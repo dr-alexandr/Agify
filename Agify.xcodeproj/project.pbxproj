@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01F90C2B715814FE5547350B /* Pods_Agify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C546810CD8C68AE3B72FD6F /* Pods_Agify.framework */; };
 		E2BBA361290BBF3F007AA03E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBA360290BBF3F007AA03E /* AppDelegate.swift */; };
 		E2BBA363290BBF3F007AA03E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBA362290BBF3F007AA03E /* SceneDelegate.swift */; };
 		E2BBA365290BBF3F007AA03E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBA364290BBF3F007AA03E /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C96DCBD65F931B89C879432 /* Pods-Agify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agify.debug.xcconfig"; path = "Target Support Files/Pods-Agify/Pods-Agify.debug.xcconfig"; sourceTree = "<group>"; };
+		8C546810CD8C68AE3B72FD6F /* Pods_Agify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Agify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BBA35D290BBF3F007AA03E /* Agify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Agify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BBA360290BBF3F007AA03E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2BBA362290BBF3F007AA03E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		E2BBA369290BBF42007AA03E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2BBA36C290BBF42007AA03E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2BBA36E290BBF42007AA03E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F27A029B057A53624BA436A8 /* Pods-Agify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agify.release.xcconfig"; path = "Target Support Files/Pods-Agify/Pods-Agify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F90C2B715814FE5547350B /* Pods_Agify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B1D54EE515AC5045C72746F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C96DCBD65F931B89C879432 /* Pods-Agify.debug.xcconfig */,
+				F27A029B057A53624BA436A8 /* Pods-Agify.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		99D1D1AD9ADA6355E1422428 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C546810CD8C68AE3B72FD6F /* Pods_Agify.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E2BBA354290BBF3F007AA03E = {
 			isa = PBXGroup;
 			children = (
 				E2BBA35F290BBF3F007AA03E /* Agify */,
 				E2BBA35E290BBF3F007AA03E /* Products */,
+				2B1D54EE515AC5045C72746F /* Pods */,
+				99D1D1AD9ADA6355E1422428 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2BBA371290BBF42007AA03E /* Build configuration list for PBXNativeTarget "Agify" */;
 			buildPhases = (
+				103714401F6B36F32D57037A /* [CP] Check Pods Manifest.lock */,
 				E2BBA359290BBF3F007AA03E /* Sources */,
 				E2BBA35A290BBF3F007AA03E /* Frameworks */,
 				E2BBA35B290BBF3F007AA03E /* Resources */,
+				57CC56518175688AB5BE83A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +157,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		103714401F6B36F32D57037A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Agify-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57CC56518175688AB5BE83A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Agify/Pods-Agify-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Agify/Pods-Agify-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Agify/Pods-Agify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E2BBA359290BBF3F007AA03E /* Sources */ = {
@@ -283,6 +351,7 @@
 		};
 		E2BBA372290BBF42007AA03E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C96DCBD65F931B89C879432 /* Pods-Agify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +371,7 @@
 		};
 		E2BBA373290BBF42007AA03E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F27A029B057A53624BA436A8 /* Pods-Agify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
