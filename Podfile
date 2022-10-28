@@ -7,7 +7,6 @@ target 'Agify' do
 
   # Pods for Agify
 pod 'SnapKit', '~> 5.6.0'
-pod 'Alamofire'
 pod 'SwiftyJSON'
 
 end
