@@ -9,36 +9,36 @@ import Foundation
 
 protocol ViewModelProtocol {
     func getAge(name: String,
-                onComplete: @escaping (String) -> Void)
+                onComplete: @escaping (SearchModel) -> Void)
     
     func getName(_ name: String)
-    var onCompletion: ((String) -> Void )? { get set }
+    var onCompletion: ((SearchModel) -> Void )? { get set }
 }
 
 final class ViewModel: ViewModelProtocol {
     
-    var onCompletion: ((String) -> Void)?
+    let networkManager = NetworkManager()
+    
+    var onCompletion: ((SearchModel) -> Void)?
     func getName(_ name: String) {
-        getAge(name: name) { [weak self] name in
+        getAge(name: name) { [weak self] searchModel in
             guard let self = self else { return }
-            self.onCompletion?(name)
+            self.onCompletion?(searchModel)
         }
     }
     
     func getAge(name: String,
-                onComplete: @escaping (String) -> Void) {
+                onComplete: @escaping (SearchModel) -> Void) {
         let endpoint = AgifyAPI.getAgebyName(name: name)
-        NetworkManager.request(endpoint: endpoint) {
-            (result: Result<SearchModel, Error>) in
+        networkManager.request(endpoint: endpoint) {
+            (result: Result<SearchModelDTO, Error>) in
             
             switch result {
             case .success(let response):
-                print(response.age)
-                DispatchQueue.main.async {
-                    onComplete("\(response.age)")
-                }
+                let searchModel = DTOMapper.map(response)
+                onComplete(searchModel)
             case .failure(let error):
-                print("Smthng went wrng \(error)")
+                Log.e(error.localizedDescription)
             }
         }
     }

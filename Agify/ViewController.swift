@@ -53,9 +53,9 @@ final class ViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name:UIResponder.keyboardWillShowNotification, object: nil)    }
     
     private func bind() {
-        viewModel.onCompletion = { [weak self] name in
+        viewModel.onCompletion = { [weak self] searchModel in
             guard let self = self else { return }
-            self.responseLabel.text = name
+            self.responseLabel.text = ("\(searchModel.age)")
         }
     }
     

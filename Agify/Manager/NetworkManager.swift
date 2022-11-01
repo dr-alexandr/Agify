@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct SearchModel: Decodable {
-    let age: Int
-    let count: Int
-    let name: String
-}
-
 enum HTTPMethod: String {
     case delete = "DELETE"
     case get = "GET"
@@ -68,20 +62,22 @@ enum AgifyAPI: API {
     }
 }
 
+private func buildURL(endpoint: API) -> URLComponents {
+    var components = URLComponents()
+    components.scheme = endpoint.scheme.rawValue
+    components.host = endpoint.baseURL
+    components.queryItems = endpoint.parameters
+    return components
+}
+
 final class NetworkManager {
-    private class func buildURL(endpoint: API) -> URLComponents {
-        var components = URLComponents()
-        components.scheme = endpoint.scheme.rawValue
-        components.host = endpoint.baseURL
-        components.queryItems = endpoint.parameters
-        return components
-    }
-    class func request<T: Decodable>(endpoint: API,
+    
+    func request<T: Decodable>(endpoint: API,
                                      completion: @escaping (Result<T, Error>)
                                         -> Void) {
         let components = buildURL(endpoint: endpoint)
         guard let url = components.url else {
-            print("URL creation error")
+            completion(.failure(NetworkError.outdated))
             return
         }
         var urlRequest = URLRequest(url: url)
@@ -98,7 +94,9 @@ final class NetworkManager {
                 return
             }
             if let responseObject = try? JSONDecoder().decode(T.self, from: data) {
-                completion(.success(responseObject))
+                DispatchQueue.main.async {
+                    completion(.success(responseObject))
+                }
             } else {
                 let error = NSError(domain: "com.AryamanSharda",
                                     code: 200,
