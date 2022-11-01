@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		01F90C2B715814FE5547350B /* Pods_Agify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C546810CD8C68AE3B72FD6F /* Pods_Agify.framework */; };
+		E20D073C290FD049005880B9 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D073B290FD049005880B9 /* ViewModel.swift */; };
+		E279722E29101DCA000BA931 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279722D29101DCA000BA931 /* NetworkManager.swift */; };
 		E2BBA361290BBF3F007AA03E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBA360290BBF3F007AA03E /* AppDelegate.swift */; };
 		E2BBA363290BBF3F007AA03E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBA362290BBF3F007AA03E /* SceneDelegate.swift */; };
 		E2BBA365290BBF3F007AA03E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBA364290BBF3F007AA03E /* ViewController.swift */; };
-		E2BBA368290BBF3F007AA03E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2BBA366290BBF3F007AA03E /* Main.storyboard */; };
 		E2BBA36A290BBF42007AA03E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2BBA369290BBF42007AA03E /* Assets.xcassets */; };
 		E2BBA36D290BBF42007AA03E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2BBA36B290BBF42007AA03E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -19,11 +20,12 @@
 /* Begin PBXFileReference section */
 		3C96DCBD65F931B89C879432 /* Pods-Agify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agify.debug.xcconfig"; path = "Target Support Files/Pods-Agify/Pods-Agify.debug.xcconfig"; sourceTree = "<group>"; };
 		8C546810CD8C68AE3B72FD6F /* Pods_Agify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Agify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E20D073B290FD049005880B9 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		E279722D29101DCA000BA931 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E2BBA35D290BBF3F007AA03E /* Agify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Agify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BBA360290BBF3F007AA03E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2BBA362290BBF3F007AA03E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E2BBA364290BBF3F007AA03E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E2BBA367290BBF3F007AA03E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E2BBA369290BBF42007AA03E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2BBA36C290BBF42007AA03E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2BBA36E290BBF42007AA03E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,7 +85,8 @@
 				E2BBA360290BBF3F007AA03E /* AppDelegate.swift */,
 				E2BBA362290BBF3F007AA03E /* SceneDelegate.swift */,
 				E2BBA364290BBF3F007AA03E /* ViewController.swift */,
-				E2BBA366290BBF3F007AA03E /* Main.storyboard */,
+				E279722D29101DCA000BA931 /* NetworkManager.swift */,
+				E20D073B290FD049005880B9 /* ViewModel.swift */,
 				E2BBA369290BBF42007AA03E /* Assets.xcassets */,
 				E2BBA36B290BBF42007AA03E /* LaunchScreen.storyboard */,
 				E2BBA36E290BBF42007AA03E /* Info.plist */,
@@ -152,7 +155,6 @@
 			files = (
 				E2BBA36D290BBF42007AA03E /* LaunchScreen.storyboard in Resources */,
 				E2BBA36A290BBF42007AA03E /* Assets.xcassets in Resources */,
-				E2BBA368290BBF3F007AA03E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +209,8 @@
 			files = (
 				E2BBA365290BBF3F007AA03E /* ViewController.swift in Sources */,
 				E2BBA361290BBF3F007AA03E /* AppDelegate.swift in Sources */,
+				E279722E29101DCA000BA931 /* NetworkManager.swift in Sources */,
+				E20D073C290FD049005880B9 /* ViewModel.swift in Sources */,
 				E2BBA363290BBF3F007AA03E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,14 +218,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E2BBA366290BBF3F007AA03E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E2BBA367290BBF3F007AA03E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E2BBA36B290BBF42007AA03E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
