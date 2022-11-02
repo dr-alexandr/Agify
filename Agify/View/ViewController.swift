@@ -32,9 +32,14 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setRootNavControl()
         setupLayout()
-        keyboardObserver()
         bind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        keyboardObserver()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -103,5 +108,11 @@ final class ViewController: UIViewController {
         view.endEditing(true)
         guard let text = textfield.text else {return}
         viewModel.getName(text)
+    }
+    
+    @objc func infoTapped() {
+        view.endEditing(true)
+        let infoVC = InfoViewCotroller(infoViewModel: InfoViewModel())
+        navigationController?.pushViewController(infoVC, animated: true)
     }
 }

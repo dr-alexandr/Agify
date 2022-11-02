@@ -32,6 +32,13 @@ extension ViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
 }
+// MARK: - Navigatin Control extension
+extension ViewController: UINavigationControllerDelegate {
+    func setRootNavControl() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Info", style: .plain, target: self, action: #selector(infoTapped))
+        navigationController?.navigationBar.tintColor = UIColor.brown
+    }
+}
 // MARK: - UILabel extension
 extension UILabel {
     static func getDefaultLabel(text: String,
@@ -77,5 +84,16 @@ extension UITextField {
         textfield.textColor = textColor
         textfield.layer.cornerRadius = cornerRadius
         return textfield
+    }
+}
+
+// MARK: - UITableViewCell extension
+extension UITableViewCell {
+    static func getDefaultTableCell() -> UITableViewCell {
+        let tableCell = UITableViewCell()
+        tableCell.selectionStyle = .none
+        tableCell.backgroundColor = UIColor(named: "LightBrown")
+        tableCell.textLabel?.textColor = UIColor.brown
+        return tableCell
     }
 }

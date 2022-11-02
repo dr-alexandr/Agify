@@ -27,23 +27,103 @@ protocol API {
     var method: HTTPMethod { get }
 }
 
+// MARK: - ApifyAPI
+enum ApifyAPI: API {
+    
+    case getIP
+    
+    var scheme:HTTPScheme {
+        switch self {
+        case .getIP:
+            return .https
+        }
+    }
+    
+    var baseURL: String {
+        switch self {
+        case .getIP:
+            return "api.ipify.org"
+        }
+    }
+    
+    var parameters: [URLQueryItem] {
+        switch self {
+        case .getIP:
+            let params = [
+                URLQueryItem(name: "format", value: "json")
+            ]
+            return params
+        }
+    }
+    
+    var method: HTTPMethod {
+        switch self {
+        case .getIP:
+            return .get
+        }
+    }
+}
+
+// MARK: - InfoApi
+enum InfoApi: API {
+    
+    case getInfoByIP(ip: String)
+    
+    var scheme: HTTPScheme {
+        switch self {
+        case .getInfoByIP:
+            return .https
+        }
+    }
+    
+    var baseURL: String {
+        switch self {
+        case .getInfoByIP:
+            return "ipinfo.io"
+        }
+    }
+    
+    var method: HTTPMethod {
+        switch self {
+        case .getInfoByIP:
+            return .get
+        }
+    }
+    
+    var path: String {
+        switch self {
+        case .getInfoByIP(let ip):
+            return "/\(ip)/geo"
+        }
+    }
+    
+    var parameters: [URLQueryItem] {
+        switch self {
+        case .getInfoByIP:
+            return []
+        }
+    }
+    
+}
+
+// MARK: - AgifyAPI
 enum AgifyAPI: API {
     case getAgebyName(name: String)
-
+    
     var scheme: HTTPScheme {
         switch self {
         case .getAgebyName:
             return .https
         }
     }
-
+    
     var baseURL: String {
         switch self {
         case .getAgebyName:
             return "api.agify.io"
         }
     }
-
+    
     var parameters: [URLQueryItem] {
         switch self {
         case .getAgebyName(let name):
@@ -53,7 +133,7 @@ enum AgifyAPI: API {
             return params
         }
     }
-
+    
     var method: HTTPMethod {
         switch self {
         case .getAgebyName:
@@ -73,8 +153,8 @@ private func buildURL(endpoint: API) -> URLComponents {
 final class NetworkManager {
     
     func request<T: Decodable>(endpoint: API,
-                                     completion: @escaping (Result<T, Error>)
-                                        -> Void) {
+                               completion: @escaping (Result<T, Error>)
+                                -> Void) {
         let components = buildURL(endpoint: endpoint)
         guard let url = components.url else {
             completion(.failure(NetworkError.outdated))
