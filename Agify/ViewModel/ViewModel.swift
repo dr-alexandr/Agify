@@ -17,7 +17,11 @@ protocol ViewModelProtocol {
 
 final class ViewModel: ViewModelProtocol {
     
-    let networkManager = NetworkManager()
+    private let networkManager: NetworkManagerProtocol
+
+    init(networkManager: NetworkManagerProtocol) {
+        self.networkManager = networkManager
+    }
     
     var onCompletion: ((SearchModel) -> Void)?
     func getName(_ name: String) {

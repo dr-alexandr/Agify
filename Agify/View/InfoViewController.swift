@@ -39,16 +39,14 @@ final class InfoViewCotroller: UITableViewController {
     }
     
     private func bind() {
-        infoViewModel.onCompletion = { [weak self] infoModel in
-            guard let self = self else { return }
-            self.infoViewModel.setData(infoModel)
+        infoViewModel.onCompletion = { 
             self.tableView.reloadData()
         }
     }
     
     // MARK: - TableView Setup
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return infoViewModel.infoTable.count
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection numberOfRows: Int) -> Int {
+        return infoViewModel.numberOfRows
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
