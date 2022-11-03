@@ -24,9 +24,9 @@ final class InfoViewModel: InfoViewModelProtocol {
                                 "Postal : ", "Timezone : ", "Readme : " ]
     var onCompletion: ((InfoModel) -> Void)?
     
-    private let networkManager: NetworkManager
+    private let networkManager: NetworkManagerProtocol
 
-    init(networkManager: NetworkManager) {
+    init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
     }
     
