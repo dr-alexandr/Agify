@@ -142,6 +142,7 @@ enum AgifyAPI: API {
     }
 }
 
+// MARK: - BuildURL Func
 private func buildURL(endpoint: API) -> URLComponents {
     var components = URLComponents()
     components.scheme = endpoint.scheme.rawValue
@@ -150,11 +151,15 @@ private func buildURL(endpoint: API) -> URLComponents {
     return components
 }
 
-final class NetworkManager {
+// MARK: - NetworkManager Class
+
+protocol NetworkManagerProtocol {
+    func request<T: Decodable>(endpoint: API, completion: @escaping (Result<T, Error>) -> Void)
+}
+
+final class NetworkManager: NetworkManagerProtocol {
     
-    func request<T: Decodable>(endpoint: API,
-                               completion: @escaping (Result<T, Error>)
-                                -> Void) {
+    func request<T: Decodable>(endpoint: API, completion: @escaping (Result<T, Error>) -> Void) {
         let components = buildURL(endpoint: endpoint)
         guard let url = components.url else {
             completion(.failure(NetworkError.outdated))

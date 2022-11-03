@@ -10,14 +10,25 @@ import Foundation
 protocol InfoViewModelProtocol {
     func getInfo(_ ip: String, onComplete: @escaping (InfoModel) -> Void)
     func getIP()
+    func setData(_ infoModel: InfoModel)
+    func getCellTitle(by indexPath: IndexPath) -> String
     
+    var infoTable: [String] { get set }
     var onCompletion: ((InfoModel) -> Void )? { get set }
 }
 
 final class InfoViewModel: InfoViewModelProtocol {
+    
+    var infoTable: [String] = [ "IP : ", "City : ", "Region : ",
+                                "Country : ", "Loc : ", "Org : ",
+                                "Postal : ", "Timezone : ", "Readme : " ]
     var onCompletion: ((InfoModel) -> Void)?
     
-    let networkManager = NetworkManager()
+    private let networkManager: NetworkManager
+
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+    }
     
     func getIP() {
         let endpoint = ApifyAPI.getIP
@@ -46,5 +57,16 @@ final class InfoViewModel: InfoViewModelProtocol {
                 Log.e(error.localizedDescription)
             }
         }
+    }
+    
+    func setData(_ infoModel: InfoModel) {
+        let array = infoModel.createArr()
+        for n in 0..<infoTable.count {
+            self.infoTable[n] += array[n]
+        }
+    }
+    
+    func getCellTitle(by indexPath: IndexPath) -> String {
+        return infoTable[indexPath.row]
     }
 }

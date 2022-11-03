@@ -11,9 +11,6 @@ import UIKit
 final class InfoViewCotroller: UITableViewController {
     
     // MARK: - Properties
-    private var infoTable: [String] = ["IP : ", "City : ", "Region : ",
-                                        "Country : ", "Loc : ", "Org : ",
-                                        "Postal : ", "Timezone : ", "Readme : "]
     private var infoViewModel: InfoViewModelProtocol
     init(infoViewModel: InfoViewModelProtocol) {
         self.infoViewModel = infoViewModel
@@ -44,22 +41,19 @@ final class InfoViewCotroller: UITableViewController {
     private func bind() {
         infoViewModel.onCompletion = { [weak self] infoModel in
             guard let self = self else { return }
-            let array = infoModel.createArr()
-            for n in 0..<self.infoTable.count {
-                self.infoTable[n] = self.infoTable[n] + array[n]
-            }
+            self.infoViewModel.setData(infoModel)
             self.tableView.reloadData()
         }
     }
     
     // MARK: - TableView Setup
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return infoTable.count
+        return infoViewModel.infoTable.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableCell = UITableViewCell.getDefaultTableCell()
-        tableCell.textLabel?.text = infoTable[indexPath.row]
+        tableCell.textLabel?.text = infoViewModel.getCellTitle(by: indexPath)
         return tableCell
     }
     
