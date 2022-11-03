@@ -13,14 +13,13 @@ protocol InfoViewModelProtocol {
     func setData(_ infoModel: InfoModel)
     func getCellTitle(by indexPath: IndexPath) -> String
     
-    var infoTable: [String] { get set }
     var onCompletion: (() -> Void )? { get set }
     var numberOfRows: Int { get }
 }
 
 final class InfoViewModel: InfoViewModelProtocol {
     
-    var infoTable: [String] = [ "IP : ", "City : ", "Region : ",
+    private var infoTable: [String] = [ "IP : ", "City : ", "Region : ",
                                 "Country : ", "Loc : ", "Org : ",
                                 "Postal : ", "Timezone : ", "Readme : " ]
     var numberOfRows: Int {
