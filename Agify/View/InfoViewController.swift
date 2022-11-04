@@ -6,11 +6,15 @@
 //
 
 import Foundation
+import SnapKit
 import UIKit
 
 final class InfoViewCotroller: UITableViewController {
     
     // MARK: - Properties
+    var goBack: (() -> Void)?
+    let backButton = UIButton.getDefaultButton(title: "Go back")
+    
     private var infoViewModel: InfoViewModelProtocol
     init(infoViewModel: InfoViewModelProtocol) {
         self.infoViewModel = infoViewModel
@@ -24,6 +28,7 @@ final class InfoViewCotroller: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupLayout()
         takeInfo()
         bind()
     }
@@ -32,6 +37,7 @@ final class InfoViewCotroller: UITableViewController {
     private func setupUI() {
         view.backgroundColor = UIColor(named: "LightBrown")
         tableView.tableFooterView = UIView()
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
     }
     
     private func takeInfo() {
@@ -42,6 +48,22 @@ final class InfoViewCotroller: UITableViewController {
         infoViewModel.onCompletion = { 
             self.tableView.reloadData()
         }
+    }
+    
+    // MARK: - Constraints
+    func setupLayout() {
+        view.addSubview(backButton)
+        backButton.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(50)
+            make.leading.trailing.equalToSuperview().inset(50)
+            make.top.equalToSuperview().inset(700)
+        }
+    }
+    
+    // MARK: - Button Action
+    @objc func backButtonPressed() {
+        self.goBack?()
     }
     
     // MARK: - TableView Setup

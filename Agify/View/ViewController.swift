@@ -14,7 +14,7 @@ final class ViewController: UIViewController {
     private let responseLabel = UILabel.getDefaultLabel(text: "🕵🏻", font: 75)
     private let titleLabel = UILabel.getDefaultLabel(text: "Agify", font: 50)
     private let button = UIButton.getDefaultButton(title: "Generate")
-//    private let infoButton = UIButton.getDefaultButton(title: "Info")
+    private let infoButton = UIButton.getDefaultButton(title: "Info")
     private let textfield = UITextField.getDefaultTextField(placeholder: "Type a name here...")
     
     // MARK: - Properties
@@ -72,7 +72,7 @@ final class ViewController: UIViewController {
         
         // Button target setup
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-//        infoButton.addTarget(self, action: #selector(infoTapped), for: .touchUpInside)
+        infoButton.addTarget(self, action: #selector(infoTapped), for: .touchUpInside)
     }
     
     // MARK: - Constraints
@@ -104,13 +104,13 @@ final class ViewController: UIViewController {
             make.bottom.equalTo(button.snp.bottom).inset(100)
             make.height.equalTo(50)
         }
-//        view.addSubview(infoButton)
-//        infoButton.snp.makeConstraints { (make) in
-//            make.trailing.equalToSuperview().inset(50)
-//            make.top.equalToSuperview().inset(100)
-//            make.height.equalTo(50)
-//            make.width.equalTo(100)
-//        }
+        view.addSubview(infoButton)
+        infoButton.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(100)
+            make.height.equalTo(50)
+            make.width.equalTo(100)
+        }
     }
     
     // MARK: - Button Action

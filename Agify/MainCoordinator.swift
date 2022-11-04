@@ -31,9 +31,9 @@ final class MainCoordinator: BaseCoordinator, CoordinatorFinishOutput {
     
     private func showInfoViewController() {
         let vc = self.viewControllerFactory.createInfoViewController()
-//        vc.onBack = { [unowned self] in
-//            self.router.popModule()
-//        }
+        vc.goBack = { [unowned self] in
+            self.router.popModule()
+        }
         self.router.push(vc)
     }
     
