@@ -32,7 +32,7 @@ extension ViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
 }
-// MARK: - Navigatin Control extension
+// MARK: - Navigation Control extension
 extension ViewController: UINavigationControllerDelegate {
     func setRootNavControl() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Info", style: .plain, target: self, action: #selector(infoTapped))
@@ -56,7 +56,7 @@ extension UILabel {
 
 // MARK: - UIButton extension
 extension UIButton {
-    static func getDefaultLabel(title: String,
+    static func getDefaultButton(title: String,
                                 font: CGFloat = 30,
                                 backgroundColor: UIColor = UIColor(named: "LightBlue") ?? .brown,
                                 titleColor: UIColor = .white) -> UIButton {
@@ -97,3 +97,12 @@ extension UITableViewCell {
         return tableCell
     }
 }
+
+// MARK: - Coordinator extension
+extension UIViewController: Presentable {
+    
+    func toPresent() -> UIViewController? {
+        return self
+    }
+}
+

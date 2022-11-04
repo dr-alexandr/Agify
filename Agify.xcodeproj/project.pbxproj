@@ -12,6 +12,14 @@
 		E219D3A729113346007D730F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3A629113346007D730F /* NetworkError.swift */; };
 		E219D3B029113990007D730F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3AF29113990007D730F /* Models.swift */; };
 		E219D3B4291153F8007D730F /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3B3291153F8007D730F /* ControllerExtensions.swift */; };
+		E23DB61A2914491C0045F58C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB6192914491C0045F58C /* Coordinator.swift */; };
+		E23DB61E29144AC40045F58C /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB61D29144AC40045F58C /* ViewControllerFactory.swift */; };
+		E23DB62129144F0E0045F58C /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB62029144F0D0045F58C /* Presentable.swift */; };
+		E23DB62429144F5C0045F58C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB62329144F5C0045F58C /* Router.swift */; };
+		E23DB62B2914510C0045F58C /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB62A2914510C0045F58C /* CoordinatorFactory.swift */; };
+		E23DB62E291452CA0045F58C /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB62D291452CA0045F58C /* MainCoordinator.swift */; };
+		E23DB63129150CA30045F58C /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB63029150CA30045F58C /* ApplicationCoordinator.swift */; };
+		E23DB63429150F9E0045F58C /* CoordinatorFinishOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB63329150F9E0045F58C /* CoordinatorFinishOutput.swift */; };
 		E279722E29101DCA000BA931 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279722D29101DCA000BA931 /* NetworkManager.swift */; };
 		E2879C9E2912672E00629CD8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2879C9D2912672E00629CD8 /* Logger.swift */; };
 		E2879CA229126CC000629CD8 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2879CA129126CC000629CD8 /* InfoViewController.swift */; };
@@ -30,6 +38,14 @@
 		E219D3A629113346007D730F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E219D3AF29113990007D730F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		E219D3B3291153F8007D730F /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
+		E23DB6192914491C0045F58C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E23DB61D29144AC40045F58C /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		E23DB62029144F0D0045F58C /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		E23DB62329144F5C0045F58C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		E23DB62A2914510C0045F58C /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
+		E23DB62D291452CA0045F58C /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		E23DB63029150CA30045F58C /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		E23DB63329150F9E0045F58C /* CoordinatorFinishOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFinishOutput.swift; sourceTree = "<group>"; };
 		E279722D29101DCA000BA931 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E2879C9D2912672E00629CD8 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = "../../../../Swift & Xcode Stuff/Logger.swift"; sourceTree = "<group>"; };
 		E2879CA129126CC000629CD8 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +164,14 @@
 				E2BBA369290BBF42007AA03E /* Assets.xcassets */,
 				E2BBA36B290BBF42007AA03E /* LaunchScreen.storyboard */,
 				E2BBA36E290BBF42007AA03E /* Info.plist */,
+				E23DB6192914491C0045F58C /* Coordinator.swift */,
+				E23DB61D29144AC40045F58C /* ViewControllerFactory.swift */,
+				E23DB62029144F0D0045F58C /* Presentable.swift */,
+				E23DB62329144F5C0045F58C /* Router.swift */,
+				E23DB62A2914510C0045F58C /* CoordinatorFactory.swift */,
+				E23DB62D291452CA0045F58C /* MainCoordinator.swift */,
+				E23DB63029150CA30045F58C /* ApplicationCoordinator.swift */,
+				E23DB63329150F9E0045F58C /* CoordinatorFinishOutput.swift */,
 			);
 			path = Agify;
 			sourceTree = "<group>";
@@ -265,17 +289,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23DB62E291452CA0045F58C /* MainCoordinator.swift in Sources */,
 				E219D3B4291153F8007D730F /* ControllerExtensions.swift in Sources */,
 				E2BBA365290BBF3F007AA03E /* ViewController.swift in Sources */,
 				E2BBA361290BBF3F007AA03E /* AppDelegate.swift in Sources */,
 				E279722E29101DCA000BA931 /* NetworkManager.swift in Sources */,
+				E23DB63129150CA30045F58C /* ApplicationCoordinator.swift in Sources */,
 				E2879CA229126CC000629CD8 /* InfoViewController.swift in Sources */,
+				E23DB61E29144AC40045F58C /* ViewControllerFactory.swift in Sources */,
 				E2879C9E2912672E00629CD8 /* Logger.swift in Sources */,
+				E23DB62429144F5C0045F58C /* Router.swift in Sources */,
 				E219D3B029113990007D730F /* Models.swift in Sources */,
 				E219D3A729113346007D730F /* NetworkError.swift in Sources */,
 				E20D073C290FD049005880B9 /* ViewModel.swift in Sources */,
 				E2BBA363290BBF3F007AA03E /* SceneDelegate.swift in Sources */,
 				E2879CA62912922A00629CD8 /* InfoViewModel.swift in Sources */,
+				E23DB61A2914491C0045F58C /* Coordinator.swift in Sources */,
+				E23DB63429150F9E0045F58C /* CoordinatorFinishOutput.swift in Sources */,
+				E23DB62129144F0E0045F58C /* Presentable.swift in Sources */,
+				E23DB62B2914510C0045F58C /* CoordinatorFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,10 +13,12 @@ final class ViewController: UIViewController {
     // MARK: - UIElements
     private let responseLabel = UILabel.getDefaultLabel(text: "🕵🏻", font: 75)
     private let titleLabel = UILabel.getDefaultLabel(text: "Agify", font: 50)
-    private let button = UIButton.getDefaultLabel(title: "Generate")
+    private let button = UIButton.getDefaultButton(title: "Generate")
+//    private let infoButton = UIButton.getDefaultButton(title: "Info")
     private let textfield = UITextField.getDefaultTextField(placeholder: "Type a name here...")
     
     // MARK: - Properties
+    var goToInfo: (() -> Void)?
     private var viewModel: ViewModelProtocol
     
     init(viewModel: ViewModelProtocol) {
@@ -70,6 +72,7 @@ final class ViewController: UIViewController {
         
         // Button target setup
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+//        infoButton.addTarget(self, action: #selector(infoTapped), for: .touchUpInside)
     }
     
     // MARK: - Constraints
@@ -101,6 +104,13 @@ final class ViewController: UIViewController {
             make.bottom.equalTo(button.snp.bottom).inset(100)
             make.height.equalTo(50)
         }
+//        view.addSubview(infoButton)
+//        infoButton.snp.makeConstraints { (make) in
+//            make.trailing.equalToSuperview().inset(50)
+//            make.top.equalToSuperview().inset(100)
+//            make.height.equalTo(50)
+//            make.width.equalTo(100)
+//        }
     }
     
     // MARK: - Button Action
@@ -112,9 +122,10 @@ final class ViewController: UIViewController {
     
     @objc func infoTapped() {
         view.endEditing(true)
-        let networkManager = NetworkManager()
-        let infoViewModel = InfoViewModel(networkManager: networkManager)
-        let infoViewController = InfoViewCotroller(infoViewModel: infoViewModel)
-        navigationController?.pushViewController(infoViewController, animated: true)
+        self.goToInfo?()
+//        let networkManager = NetworkManager()
+//        let infoViewModel = InfoViewModel(networkManager: networkManager)
+//        let infoViewController = InfoViewCotroller(infoViewModel: infoViewModel)
+//        navigationController?.pushViewController(infoViewController, animated: true)
     }
 }
