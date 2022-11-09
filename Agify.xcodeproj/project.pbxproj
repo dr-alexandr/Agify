@@ -165,13 +165,13 @@
 				E2BBA36B290BBF42007AA03E /* LaunchScreen.storyboard */,
 				E2BBA36E290BBF42007AA03E /* Info.plist */,
 				E23DB6192914491C0045F58C /* Coordinator.swift */,
-				E23DB61D29144AC40045F58C /* ViewControllerFactory.swift */,
 				E23DB62029144F0D0045F58C /* Presentable.swift */,
-				E23DB62329144F5C0045F58C /* Router.swift */,
-				E23DB62A2914510C0045F58C /* CoordinatorFactory.swift */,
-				E23DB62D291452CA0045F58C /* MainCoordinator.swift */,
-				E23DB63029150CA30045F58C /* ApplicationCoordinator.swift */,
 				E23DB63329150F9E0045F58C /* CoordinatorFinishOutput.swift */,
+				E23DB63029150CA30045F58C /* ApplicationCoordinator.swift */,
+				E23DB62D291452CA0045F58C /* MainCoordinator.swift */,
+				E23DB62A2914510C0045F58C /* CoordinatorFactory.swift */,
+				E23DB61D29144AC40045F58C /* ViewControllerFactory.swift */,
+				E23DB62329144F5C0045F58C /* Router.swift */,
 			);
 			path = Agify;
 			sourceTree = "<group>";

@@ -9,18 +9,8 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
-//    var window: UIWindow?
-//
-//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//        let window = UIWindow(windowScene: windowScene)
-//        window.rootViewController = UINavigationController(rootViewController: ViewController(viewModel: ViewModel(networkManager: NetworkManager())))
-//        window.makeKeyAndVisible()
-//        self.window = window
-//    }
-    
     var window: UIWindow?
-    var appCoordinator: ApplicationCoordinator!
+    var appCoordinator: ApplicationCoordinator?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // 1
@@ -29,13 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         // 2
-        let appWindow = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        appWindow.windowScene = windowScene
+        let appWindow = UIWindow(windowScene: windowScene)
         
         // 3
         let navController = UINavigationController()
         appCoordinator = ApplicationCoordinator(router: Router(rootController: navController), coordinatorFactory: CoordinatorFactory())
-        appCoordinator.start()
+        appCoordinator?.start()
 
         // 4
         appWindow.rootViewController = navController

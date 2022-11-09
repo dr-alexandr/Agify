@@ -94,6 +94,7 @@ extension UITableViewCell {
         tableCell.selectionStyle = .none
         tableCell.backgroundColor = UIColor(named: "LightBrown")
         tableCell.textLabel?.textColor = UIColor.brown
+        tableCell.textLabel?.numberOfLines = 0
         return tableCell
     }
 }

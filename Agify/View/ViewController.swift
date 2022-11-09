@@ -123,9 +123,5 @@ final class ViewController: UIViewController {
     @objc func infoTapped() {
         view.endEditing(true)
         self.goToInfo?()
-//        let networkManager = NetworkManager()
-//        let infoViewModel = InfoViewModel(networkManager: networkManager)
-//        let infoViewController = InfoViewCotroller(infoViewModel: infoViewModel)
-//        navigationController?.pushViewController(infoViewController, animated: true)
     }
 }
