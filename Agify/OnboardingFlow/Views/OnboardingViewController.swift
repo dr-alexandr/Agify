@@ -11,8 +11,8 @@ import UIKit
 class OnboardingViewController: UIViewController {
     
     var onboardingCompleted: (() -> Void)?
-    let onboardingText = UILabel.getDefaultLabel(text: "Hello! This app was made to test my coding skills. Test it!")
-    let onboardingButton = UIButton.getDefaultButton(title: "Start!", backgroundColor: .darkGray, titleColor: .white)
+    private let onboardingText = UILabel.getDefaultLabel(text: "Hello! This app was made to test my coding skills. Test it!")
+    private let onboardingButton = UIButton.getDefaultButton(title: "Start!", backgroundColor: .darkGray, titleColor: .white)
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -16,6 +16,7 @@ final class ViewController: UIViewController {
     private let button = UIButton.getDefaultButton(title: "Generate")
     private let infoButton = UIButton.getDefaultButton(title: "Info")
     private let textfield = UITextField.getDefaultTextField(placeholder: "Type a name here...")
+    private let loader = UIActivityIndicatorView()
     
     // MARK: - Properties
     var goToInfo: (() -> Void)?
@@ -61,8 +62,10 @@ final class ViewController: UIViewController {
     
     private func bind() {
         viewModel.onCompletion = { [weak self] searchModel in
+            self?.loader.stopAnimating()
             guard let self = self else { return }
             self.responseLabel.text = ("\(searchModel.age)")
+            self.responseLabel.isHidden = false
         }
     }
     
@@ -83,11 +86,6 @@ final class ViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(50)
-        }
-        view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(responseLabel).inset(250)
-            make.centerX.equalToSuperview()
         }
         view.addSubview(button)
         button.snp.makeConstraints { make in
@@ -111,12 +109,26 @@ final class ViewController: UIViewController {
             make.height.equalTo(50)
             make.width.equalTo(100)
         }
+        view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(infoButton).inset(100)
+            make.centerX.equalToSuperview()
+        }
+        view.addSubview(loader)
+        loader.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.center.equalTo(responseLabel)
+        }
+        
     }
     
     // MARK: - Button Action
     @objc func buttonPressed() {
         view.endEditing(true)
         guard let text = textfield.text else {return}
+        guard text != "" else {self.responseLabel.text = "🕵🏻"; return}
+        self.responseLabel.isHidden = true
+        loader.startAnimating()
         viewModel.getName(text)
     }
     

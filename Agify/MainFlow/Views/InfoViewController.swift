@@ -14,6 +14,7 @@ final class InfoViewCotroller: UITableViewController {
     // MARK: - Properties
     var goBack: (() -> Void)?
     let backButton = UIButton.getDefaultButton(title: "Go back")
+    let loader = UIActivityIndicatorView()
     
     private var infoViewModel: InfoViewModelProtocol
     init(infoViewModel: InfoViewModelProtocol) {
@@ -27,8 +28,8 @@ final class InfoViewCotroller: UITableViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         setupLayout()
+        setupUI()
         takeInfo()
         bind()
     }
@@ -41,12 +42,14 @@ final class InfoViewCotroller: UITableViewController {
     }
     
     private func takeInfo() {
+        loader.startAnimating()
         infoViewModel.getIP()
     }
     
     private func bind() {
         infoViewModel.onCompletion = { 
             self.tableView.reloadData()
+            self.loader.stopAnimating()
         }
     }
     
@@ -58,6 +61,12 @@ final class InfoViewCotroller: UITableViewController {
             make.height.equalTo(50)
             make.leading.trailing.equalToSuperview().inset(50)
             make.top.equalToSuperview().inset(700)
+        }
+        
+        view.addSubview(loader)
+        loader.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(backButton).inset(100)
         }
     }
     
