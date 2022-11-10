@@ -14,11 +14,15 @@ final class ApplicationCoordinator: BaseCoordinator {
     private let coordinatorFactory: CoordinatorFactoryProtocol
     private let router: RouterProtocol
     private let viewControllerFactory: ViewControllerFactory = ViewControllerFactory()
+    private var launchInstructor = LaunchInstructor.configure()
     
     // MARK: - Coordinator
     
     override func start() {
-        runMainFlow()
+        switch launchInstructor {
+            case .onboarding: runOnboardingFlow()
+            case .main: runMainFlow()
+        }
     }
     
     // MARK: - Private methods
@@ -27,6 +31,18 @@ final class ApplicationCoordinator: BaseCoordinator {
         let coordinator = self.coordinatorFactory.makeMainCoordinatorBox(router: self.router, coordinatorFactory: self.coordinatorFactory, viewControllerFactory: self.viewControllerFactory)
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)
+            self.launchInstructor = LaunchInstructor.configure(tutorialWasShown: false)
+            self.start()
+        }
+        self.addDependency(coordinator)
+        coordinator.start()
+    }
+    
+    private func runOnboardingFlow() {
+        let coordinator = self.coordinatorFactory.makeOnboardingCoordinatorBox(router: self.router, viewControllerFactory: self.viewControllerFactory)
+        coordinator.finishFlow = { [unowned self, unowned coordinator] in
+            self.removeDependency(coordinator)
+            self.launchInstructor = LaunchInstructor.configure(tutorialWasShown: true)
             self.start()
         }
         self.addDependency(coordinator)

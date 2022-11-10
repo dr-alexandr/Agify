@@ -34,6 +34,7 @@ final class MainCoordinator: BaseCoordinator, CoordinatorFinishOutput {
         vc.goBack = { [unowned self] in
             self.router.popModule()
         }
+        
         self.router.push(vc)
     }
     
