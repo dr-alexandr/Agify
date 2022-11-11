@@ -9,6 +9,11 @@ import Foundation
 
 class ViewControllerFactory {
     
+    func createLoginViewController() -> LoginViewController {
+        let vc = LoginViewController()
+        return vc
+    }
+    
     func createViewController() -> ViewController {
         let vc = ViewController(viewModel: ViewModel(networkManager: NetworkManager()))
         return vc

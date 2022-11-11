@@ -120,7 +120,7 @@ final class Router: NSObject, RouterProtocol {
     
     func setRootModule(_ module: Presentable?, hideBar: Bool) {
         guard let controller = module?.toPresent() else { return }
-        self.rootController?.setViewControllers([controller], animated: false)
+        self.rootController?.setViewControllers([controller], animated: true)
         self.rootController?.isNavigationBarHidden = hideBar
     }
     

@@ -7,19 +7,21 @@
 
 import Foundation
 
-fileprivate var onboardingWasShown = false
 
 enum LaunchInstructor {
     
+    case login
     case main
     case onboarding
     
     // MARK: - Public methods
     
-    static func configure( tutorialWasShown: Bool = onboardingWasShown) -> LaunchInstructor {
-        switch (tutorialWasShown) {
-            case (false): return .onboarding
-            case (true): return .main
+    static func configure(loggedIn: Bool = UserDefaults.standard.bool(forKey: "LoggedIn"),
+                          welcomeScreenWasShown: Bool = UserDefaults.standard.bool(forKey: "welcomeScreenWasShown")) -> LaunchInstructor {
+        switch (loggedIn, welcomeScreenWasShown) {
+            case (true, true): return .main
+            case (false, _): return .login
+            case (true, false): return .onboarding
         }
     }
 }

@@ -76,8 +76,11 @@ extension UITextField {
                                     textAlignment: NSTextAlignment = .center,
                                     font: CGFloat = 30,
                                     textColor: UIColor = .brown,
-                                    cornerRadius: CGFloat = 25) -> UITextField {
+                                    cornerRadius: CGFloat = 25,
+                                    borderStyle: UITextField.BorderStyle = .none ) -> UITextField {
         let textfield = UITextField()
+        textfield.backgroundColor = UIColor(named: "LightBrown")
+        textfield.borderStyle = borderStyle
         textfield.placeholder = placeholder
         textfield.textAlignment = textAlignment
         textfield.font = UIFont.boldSystemFont(ofSize: font)

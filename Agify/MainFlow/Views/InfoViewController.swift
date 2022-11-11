@@ -13,7 +13,9 @@ final class InfoViewCotroller: UITableViewController {
     
     // MARK: - Properties
     var goBack: (() -> Void)?
+    var logout: (() -> Void)?
     let backButton = UIButton.getDefaultButton(title: "Go back")
+    let logoutButton = UIButton.getDefaultButton(title: "LogOut", backgroundColor: .red)
     let loader = UIActivityIndicatorView()
     
     private var infoViewModel: InfoViewModelProtocol
@@ -39,6 +41,7 @@ final class InfoViewCotroller: UITableViewController {
         view.backgroundColor = UIColor(named: "LightBrown")
         tableView.tableFooterView = UIView()
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        logoutButton.addTarget(self, action: #selector(logoutPressed), for: .touchUpInside)
     }
     
     private func takeInfo() {
@@ -60,9 +63,15 @@ final class InfoViewCotroller: UITableViewController {
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
             make.leading.trailing.equalToSuperview().inset(50)
-            make.top.equalToSuperview().inset(700)
+            make.top.equalToSuperview().inset(600)
         }
-        
+        view.addSubview(logoutButton)
+        logoutButton.snp.makeConstraints { (make) in
+            make.trailing.leading.equalToSuperview().inset(50)
+            make.width.equalTo(100)
+            make.height.equalTo(50)
+            make.top.equalTo(backButton).inset(75)
+        }
         view.addSubview(loader)
         loader.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
@@ -73,6 +82,10 @@ final class InfoViewCotroller: UITableViewController {
     // MARK: - Button Action
     @objc func backButtonPressed() {
         self.goBack?()
+    }
+    
+    @objc func logoutPressed() {
+        self.logout?()
     }
     
     // MARK: - TableView Setup

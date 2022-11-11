@@ -12,6 +12,8 @@
 		E219D3A729113346007D730F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3A629113346007D730F /* NetworkError.swift */; };
 		E219D3B029113990007D730F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3AF29113990007D730F /* Models.swift */; };
 		E219D3B4291153F8007D730F /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3B3291153F8007D730F /* ControllerExtensions.swift */; };
+		E2343166291E4542003F9538 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2343165291E4542003F9538 /* LoginCoordinator.swift */; };
+		E2343170291E4626003F9538 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234316F291E4626003F9538 /* LoginViewController.swift */; };
 		E23DB61A2914491C0045F58C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB6192914491C0045F58C /* Coordinator.swift */; };
 		E23DB61E29144AC40045F58C /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB61D29144AC40045F58C /* ViewControllerFactory.swift */; };
 		E23DB62129144F0E0045F58C /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB62029144F0D0045F58C /* Presentable.swift */; };
@@ -41,6 +43,8 @@
 		E219D3A629113346007D730F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E219D3AF29113990007D730F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		E219D3B3291153F8007D730F /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
+		E2343165291E4542003F9538 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		E234316F291E4626003F9538 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E23DB6192914491C0045F58C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E23DB61D29144AC40045F58C /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		E23DB62029144F0D0045F58C /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
@@ -120,6 +124,30 @@
 			path = DTO;
 			sourceTree = "<group>";
 		};
+		E2343168291E45DD003F9538 /* LoginFlow */ = {
+			isa = PBXGroup;
+			children = (
+				E2343169291E45F2003F9538 /* Views */,
+				E234316A291E45F8003F9538 /* ViewModels */,
+			);
+			path = LoginFlow;
+			sourceTree = "<group>";
+		};
+		E2343169291E45F2003F9538 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E234316F291E4626003F9538 /* LoginViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E234316A291E45F8003F9538 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		E24AA332291CFF9000784E8B /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +205,7 @@
 				E23DB6192914491C0045F58C /* Coordinator.swift */,
 				E23DB63029150CA30045F58C /* ApplicationCoordinator.swift */,
 				E24AA32F291CF94500784E8B /* LaunchInstructor.swift */,
+				E2343165291E4542003F9538 /* LoginCoordinator.swift */,
 				E23DB62D291452CA0045F58C /* MainCoordinator.swift */,
 				E24AA32C291CF5CC00784E8B /* OnboardingCoordinator.swift */,
 				E23DB62A2914510C0045F58C /* CoordinatorFactory.swift */,
@@ -212,6 +241,7 @@
 				E2BBA360290BBF3F007AA03E /* AppDelegate.swift */,
 				E2BBA362290BBF3F007AA03E /* SceneDelegate.swift */,
 				E219D3B3291153F8007D730F /* ControllerExtensions.swift */,
+				E2343168291E45DD003F9538 /* LoginFlow */,
 				E24AA332291CFF9000784E8B /* MainFlow */,
 				E24AA337291D005700784E8B /* OnboardingFlow */,
 				E219D3AE2911395E007D730F /* DTO */,
@@ -350,11 +380,13 @@
 				E2879C9E2912672E00629CD8 /* Logger.swift in Sources */,
 				E24AA32D291CF5CC00784E8B /* OnboardingCoordinator.swift in Sources */,
 				E23DB62429144F5C0045F58C /* Router.swift in Sources */,
+				E2343170291E4626003F9538 /* LoginViewController.swift in Sources */,
 				E219D3B029113990007D730F /* Models.swift in Sources */,
 				E219D3A729113346007D730F /* NetworkError.swift in Sources */,
 				E20D073C290FD049005880B9 /* ViewModel.swift in Sources */,
 				E2BBA363290BBF3F007AA03E /* SceneDelegate.swift in Sources */,
 				E2879CA62912922A00629CD8 /* InfoViewModel.swift in Sources */,
+				E2343166291E4542003F9538 /* LoginCoordinator.swift in Sources */,
 				E23DB61A2914491C0045F58C /* Coordinator.swift in Sources */,
 				E23DB63429150F9E0045F58C /* CoordinatorFinishOutput.swift in Sources */,
 				E24AA330291CF94500784E8B /* LaunchInstructor.swift in Sources */,

@@ -34,13 +34,17 @@ final class MainCoordinator: BaseCoordinator, CoordinatorFinishOutput {
         vc.goBack = { [unowned self] in
             self.router.popModule()
         }
-        
+        vc.logout = { [unowned self] in
+            UserDefaults.standard.set(false, forKey: "LoggedIn")
+            self.finishFlow?()
+        }
         self.router.push(vc)
     }
     
     // MARK: - Coordinator
     
     override func start() {
+        UserDefaults.standard.set(true, forKey: "LoggedIn")
         self.showViewController()
     }
     
