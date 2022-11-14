@@ -71,7 +71,6 @@ final class InfoViewCotroller: UIViewController, UITableViewDelegate, UITableVie
         view.addSubview(logoutButton)
         logoutButton.snp.makeConstraints { (make) in
             make.trailing.leading.equalToSuperview().inset(50)
-            make.width.equalTo(100)
             make.height.equalTo(50)
             make.bottom.equalToSuperview().inset(50)
         }
