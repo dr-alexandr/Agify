@@ -76,7 +76,17 @@ final class RegisterViewController: UIViewController {
     }
     
     @objc private func registerPressed() {
-        self.register?()
+        guard usernameTextfield.text != "" else {return}
+        guard passwordTextfield.text != "" else {return}
+        guard let safePassword = passwordTextfield.text?.data(using: .utf8) else {return}
+        do {
+            try KeychainManager.save(service: "Agify",
+                                     account: usernameTextfield.text!,
+                                     password: safePassword)
+            self.register?()
+        } catch {
+            print(error)
+        }
     }
     
     @objc private func goToLoginPressed() {

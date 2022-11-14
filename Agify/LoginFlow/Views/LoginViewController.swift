@@ -77,11 +77,23 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func loginPressed() {
+        guard usernameTextfield.text != "" else {return}
+        guard passwordTextfield.text != "" else {return}
+        guard passwordTextfield.text == getPassword(account: usernameTextfield.text!) else {return}
         self.login?()
     }
     
     @objc private func goToRegisterPressed() {
         self.goToRegisterPage?()
+    }
+    
+    private func getPassword(account: String) -> String? {
+        guard let data = KeychainManager.get(service: "Agify", account: account) else {
+            print("getData func Failed")
+            return nil
+        }
+        let password = String(decoding: data, as: UTF8.self)
+        return password
     }
     
 }

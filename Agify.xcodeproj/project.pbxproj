@@ -35,6 +35,7 @@
 		E2BBA36A290BBF42007AA03E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2BBA369290BBF42007AA03E /* Assets.xcassets */; };
 		E2BBA36D290BBF42007AA03E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2BBA36B290BBF42007AA03E /* LaunchScreen.storyboard */; };
 		E2E204E829223A3C00A0EF0A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E204E729223A3C00A0EF0A /* RegisterViewController.swift */; };
+		E2E204EC2922558500A0EF0A /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E204EB2922558500A0EF0A /* KeychainManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		E2BBA36C290BBF42007AA03E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2BBA36E290BBF42007AA03E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E204E729223A3C00A0EF0A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E2E204EB2922558500A0EF0A /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		F27A029B057A53624BA436A8 /* Pods-Agify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agify.release.xcconfig"; path = "Target Support Files/Pods-Agify/Pods-Agify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -251,11 +253,20 @@
 				E219D3AC2911362A007D730F /* Manager */,
 				E219D3A52911331F007D730F /* Service */,
 				E24AA33E291D02EB00784E8B /* CoordinatorSetup */,
+				E2E204EA2922555F00A0EF0A /* KeyChain */,
 				E2BBA369290BBF42007AA03E /* Assets.xcassets */,
 				E2BBA36B290BBF42007AA03E /* LaunchScreen.storyboard */,
 				E2BBA36E290BBF42007AA03E /* Info.plist */,
 			);
 			path = Agify;
+			sourceTree = "<group>";
+		};
+		E2E204EA2922555F00A0EF0A /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				E2E204EB2922558500A0EF0A /* KeychainManager.swift */,
+			);
+			path = KeyChain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +395,7 @@
 				E24AA32D291CF5CC00784E8B /* OnboardingCoordinator.swift in Sources */,
 				E23DB62429144F5C0045F58C /* Router.swift in Sources */,
 				E2343170291E4626003F9538 /* LoginViewController.swift in Sources */,
+				E2E204EC2922558500A0EF0A /* KeychainManager.swift in Sources */,
 				E219D3B029113990007D730F /* Models.swift in Sources */,
 				E219D3A729113346007D730F /* NetworkError.swift in Sources */,
 				E20D073C290FD049005880B9 /* ViewModel.swift in Sources */,
