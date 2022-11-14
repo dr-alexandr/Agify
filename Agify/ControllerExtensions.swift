@@ -81,8 +81,10 @@ extension UITextField {
                                     font: CGFloat = 30,
                                     textColor: UIColor = .brown,
                                     cornerRadius: CGFloat = 25,
-                                    borderStyle: UITextField.BorderStyle = .none ) -> UITextField {
+                                    borderStyle: UITextField.BorderStyle = .none,
+                                    secure: Bool = false) -> UITextField {
         let textfield = UITextField()
+        textfield.isSecureTextEntry = secure
         textfield.backgroundColor = UIColor(named: "LightBrown")
         textfield.borderStyle = borderStyle
         textfield.placeholder = placeholder

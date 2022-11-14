@@ -18,7 +18,7 @@ final class RegisterViewController: UIViewController {
     let usernameLabel = UILabel.getDefaultLabel(text: "Username")
     let usernameTextfield = UITextField.getDefaultTextField(placeholder: "Enter username...", textAlignment: .left, font: 20, textColor: .brown, cornerRadius: 25, borderStyle: .roundedRect)
     let passwordLabel = UILabel.getDefaultLabel(text: "Password")
-    let passwordTextfield = UITextField.getDefaultTextField(placeholder: "Enter username...", textAlignment: .left, font: 20, textColor: .brown, cornerRadius: 25, borderStyle: .roundedRect)
+    let passwordTextfield = UITextField.getDefaultTextField(placeholder: "Enter username...", textAlignment: .left, font: 20, textColor: .brown, cornerRadius: 25, borderStyle: .roundedRect, secure: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
