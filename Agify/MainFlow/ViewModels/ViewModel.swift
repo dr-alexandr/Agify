@@ -23,6 +23,10 @@ final class ViewModel: ViewModelProtocol {
         self.networkManager = networkManager
     }
     
+    deinit {
+        print("Deallocation \(self)")
+    }
+    
     var onCompletion: ((SearchModel) -> Void)?
     func getName(_ name: String) {
         getAge(name: name) { [weak self] searchModel in

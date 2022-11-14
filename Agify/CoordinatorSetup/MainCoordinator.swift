@@ -48,6 +48,10 @@ final class MainCoordinator: BaseCoordinator, CoordinatorFinishOutput {
         self.showViewController()
     }
     
+    deinit {
+        print("Deallocation \(self)")
+    }
+    
     // MARK: - Init
     
     init(router: RouterProtocol, coordinatorFactory: CoordinatorFactoryProtocol, viewControllerFactory: ViewControllerFactory) {

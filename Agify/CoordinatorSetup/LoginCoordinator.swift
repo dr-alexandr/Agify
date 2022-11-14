@@ -19,6 +19,7 @@ final class LoginCoordinator: BaseCoordinator, CoordinatorFinishOutput {
     private let coordinatorFactory: CoordinatorFactoryProtocol
     private let viewControllerFactory: ViewControllerFactory
     
+    
     // MARK: - Private methods
     
     private func showLoginViewController() {
@@ -47,6 +48,10 @@ final class LoginCoordinator: BaseCoordinator, CoordinatorFinishOutput {
     
     override func start() {
         self.showLoginViewController()
+    }
+    
+    deinit {
+        print("Deallocation \(self)")
     }
     
     // MARK: - Init

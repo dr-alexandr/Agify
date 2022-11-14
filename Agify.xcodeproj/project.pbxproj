@@ -132,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				E2343169291E45F2003F9538 /* Views */,
-				E234316A291E45F8003F9538 /* ViewModels */,
 			);
 			path = LoginFlow;
 			sourceTree = "<group>";
@@ -144,13 +143,6 @@
 				E2E204E729223A3C00A0EF0A /* RegisterViewController.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E234316A291E45F8003F9538 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E24AA332291CFF9000784E8B /* MainFlow */ = {
@@ -184,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				E24AA338291D007300784E8B /* Views */,
-				E24AA339291D008400784E8B /* ViewModels */,
 			);
 			path = OnboardingFlow;
 			sourceTree = "<group>";
@@ -195,13 +186,6 @@
 				E24AA329291CF17400784E8B /* OnboardingViewController.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E24AA339291D008400784E8B /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E24AA33E291D02EB00784E8B /* CoordinatorSetup */ = {

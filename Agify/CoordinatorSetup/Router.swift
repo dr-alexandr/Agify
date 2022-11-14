@@ -148,6 +148,10 @@ final class Router: NSObject, RouterProtocol {
         super.init()
         self.rootController?.delegate = self
     }
+    
+    deinit {
+        print("Deallocation \(self)")
+    }
 }
 
 // MARK: - Extensions

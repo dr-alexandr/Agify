@@ -33,6 +33,10 @@ final class InfoViewModel: InfoViewModelProtocol {
         self.networkManager = networkManager
     }
     
+    deinit {
+        print("Deallocation \(self)")
+    }
+    
     func getIP() {
         let endpoint = ApifyAPI.getIP
         networkManager.request(endpoint: endpoint) { (result: Result<ApifyDTO, Error>) in

@@ -5,15 +5,16 @@
 //  Created by Dr.Alexandr on 11.11.2022.
 //
 
-import Foundation
 import UIKit
 import SnapKit
 
 final class LoginViewController: UIViewController {
     
+    // MARK: - Properties
     var login: (() -> Void)?
     var goToRegisterPage: (() -> Void)?
     
+    // MARK: - UIElements
     let button = UIButton.getDefaultButton(title: "Login")
     let goToRegisterButton = UIButton.getDefaultButton(title: "Registration", font: 17, backgroundColor: UIColor(named: "LightBrown") ?? .gray, titleColor: .brown, underline: 1.0)
     let usernameLabel = UILabel.getDefaultLabel(text: "Username")
@@ -21,14 +22,35 @@ final class LoginViewController: UIViewController {
     let passwordLabel = UILabel.getDefaultLabel(text: "Password")
     let passwordTextfield = UITextField.getDefaultTextField(placeholder: "Enter username...", textAlignment: .left, font: 20, textColor: .brown, cornerRadius: 25, borderStyle: .roundedRect, secure: true)
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         setupUI()
     }
     
+    deinit {
+        print("Deallocation \(self)")
+    }
+    
+    // MARK: - Helpers
+    private func setupUI() {
+        view.backgroundColor = UIColor(named: "LightBrown")
+        button.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
+        goToRegisterButton.addTarget(self, action: #selector(goToRegisterPressed), for: .touchUpInside)
+    }
+    
+    private func getPassword(account: String) -> String? {
+        guard let data = KeychainManager.get(service: "Agify", account: account) else {
+            print("getData func Failed")
+            return nil
+        }
+        let password = String(decoding: data, as: UTF8.self)
+        return password
+    }
+    
+    // MARK: - Constraints
     private func setupLayout() {
-        
         view.addSubview(passwordTextfield)
         passwordTextfield.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -70,12 +92,7 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    private func setupUI() {
-        view.backgroundColor = UIColor(named: "LightBrown")
-        button.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
-        goToRegisterButton.addTarget(self, action: #selector(goToRegisterPressed), for: .touchUpInside)
-    }
-    
+    // MARK: - Actions
     @objc private func loginPressed() {
         guard usernameTextfield.text != "" else {return}
         guard passwordTextfield.text != "" else {return}
@@ -85,15 +102,6 @@ final class LoginViewController: UIViewController {
     
     @objc private func goToRegisterPressed() {
         self.goToRegisterPage?()
-    }
-    
-    private func getPassword(account: String) -> String? {
-        guard let data = KeychainManager.get(service: "Agify", account: account) else {
-            print("getData func Failed")
-            return nil
-        }
-        let password = String(decoding: data, as: UTF8.self)
-        return password
     }
     
 }

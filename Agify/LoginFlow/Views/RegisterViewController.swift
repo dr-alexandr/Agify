@@ -5,14 +5,16 @@
 //  Created by Dr.Alexandr on 14.11.2022.
 //
 
-import Foundation
 import UIKit
+import SnapKit
 
 final class RegisterViewController: UIViewController {
     
+    // MARK: - Properties
     var register: (() -> Void)?
     var goToLoginPage: (() -> Void)?
     
+    // MARK: - UIElements
     let button = UIButton.getDefaultButton(title: "Register")
     let goToLoginButton = UIButton.getDefaultButton(title: "Login", font: 17, backgroundColor: UIColor(named: "LightBrown") ?? .gray, titleColor: .brown, underline: 1.0)
     let usernameLabel = UILabel.getDefaultLabel(text: "Username")
@@ -20,14 +22,26 @@ final class RegisterViewController: UIViewController {
     let passwordLabel = UILabel.getDefaultLabel(text: "Password")
     let passwordTextfield = UITextField.getDefaultTextField(placeholder: "Enter username...", textAlignment: .left, font: 20, textColor: .brown, cornerRadius: 25, borderStyle: .roundedRect, secure: true)
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         setupUI()
     }
     
+    deinit {
+        print("Deallocation \(self)")
+    }
+    
+    // MARK: - Helpers
+    private func setupUI() {
+        view.backgroundColor = UIColor(named: "LightBrown")
+        button.addTarget(self, action: #selector(registerPressed), for: .touchUpInside)
+        goToLoginButton.addTarget(self, action: #selector(goToLoginPressed), for: .touchUpInside)
+    }
+    
+    // MARK: - Constraints
     private func setupLayout() {
-        
         view.addSubview(passwordTextfield)
         passwordTextfield.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -69,12 +83,7 @@ final class RegisterViewController: UIViewController {
         }
     }
     
-    private func setupUI() {
-        view.backgroundColor = UIColor(named: "LightBrown")
-        button.addTarget(self, action: #selector(registerPressed), for: .touchUpInside)
-        goToLoginButton.addTarget(self, action: #selector(goToLoginPressed), for: .touchUpInside)
-    }
-    
+    // MARK: - Actions
     @objc private func registerPressed() {
         guard usernameTextfield.text != "" else {return}
         guard passwordTextfield.text != "" else {return}

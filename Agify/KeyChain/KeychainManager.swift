@@ -44,4 +44,8 @@ final class KeychainManager {
         _ = SecItemCopyMatching(query as CFDictionary, &result)
         return result as? Data
     }
+    
+    deinit {
+        print("Deallocation \(self)")
+    }
 }

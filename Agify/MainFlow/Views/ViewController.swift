@@ -50,6 +50,10 @@ final class ViewController: UIViewController {
         removeObservers()
     }
     
+    deinit {
+        print("Deallocation \(self)")
+    }
+    
     // MARK: - Helpers
     private func keyboardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

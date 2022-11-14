@@ -11,13 +11,15 @@ import UIKit
 
 final class InfoViewCotroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    // MARK: - Properties
-    var goBack: (() -> Void)?
-    var logout: (() -> Void)?
+    // MARK: - UIElements
     let tableView = UITableView()
     let backButton = UIButton.getDefaultButton(title: "Go back")
     let logoutButton = UIButton.getDefaultButton(title: "LogOut", backgroundColor: .red)
     let loader = UIActivityIndicatorView()
+    
+    // MARK: - Properties
+    var goBack: (() -> Void)?
+    var logout: (() -> Void)?
     
     private var infoViewModel: InfoViewModelProtocol
     init(infoViewModel: InfoViewModelProtocol) {
@@ -35,6 +37,10 @@ final class InfoViewCotroller: UIViewController, UITableViewDelegate, UITableVie
         setupUI()
         takeInfo()
         bind()
+    }
+    
+    deinit {
+        print("Deallocation \(self)")
     }
     
     // MARK: - Helpers

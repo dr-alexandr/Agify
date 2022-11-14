@@ -34,4 +34,8 @@ class ViewControllerFactory {
         return vc
     }
     
+    deinit {
+        print("Deallocation \(self)")
+    }
+    
 }

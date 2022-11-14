@@ -32,4 +32,8 @@ class OnboardingCoordinator: BaseCoordinator, CoordinatorFinishOutput {
         self.router = router
         self.viewControllerFactory = viewControllerFactory
     }
+    
+    deinit {
+        print("Deallocation \(self)")
+    }
 }

@@ -35,4 +35,8 @@ final class CoordinatorFactory: CoordinatorFactoryProtocol {
         let coordinator = OnboardingCoordinator(router: router, viewControllerFactory: viewControllerFactory)
         return coordinator
     }
+    
+    deinit {
+        print("Deallocation \(self)")
+    }
 }

@@ -26,6 +26,10 @@ final class ApplicationCoordinator: BaseCoordinator {
         }
     }
     
+    deinit {
+        print("Deallocation \(self)")
+    }
+    
     // MARK: - Private methods
     
     private func runLoginFlow() {

@@ -191,4 +191,8 @@ final class NetworkManager: NetworkManagerProtocol {
         }
         dataTask.resume()
     }
+    
+    deinit {
+        print("Deallocation \(self)")
+    }
 }
