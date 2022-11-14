@@ -14,6 +14,11 @@ class ViewControllerFactory {
         return vc
     }
     
+    func createRegisterViewController() -> RegisterViewController {
+        let vc = RegisterViewController()
+        return vc
+    }
+    
     func createViewController() -> ViewController {
         let vc = ViewController(viewModel: ViewModel(networkManager: NetworkManager()))
         return vc

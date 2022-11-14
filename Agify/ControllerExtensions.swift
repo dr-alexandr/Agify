@@ -59,13 +59,17 @@ extension UIButton {
     static func getDefaultButton(title: String,
                                 font: CGFloat = 30,
                                 backgroundColor: UIColor = UIColor(named: "LightBlue") ?? .brown,
-                                titleColor: UIColor = .white) -> UIButton {
+                                titleColor: UIColor = .white, underline: Float = 0 ) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitleColor(titleColor, for: .normal)
         button.setTitle(title, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: font)
         button.backgroundColor = backgroundColor
         button.layer.cornerRadius = 25
+        
+        let attributedString = NSAttributedString(string: NSLocalizedString(button.currentTitle ?? "Button", comment: ""), attributes:[NSAttributedString.Key.underlineStyle: underline])
+        button.setAttributedTitle(attributedString, for: .normal)
+        
         return button
     }
 }

@@ -111,7 +111,7 @@ final class ViewController: UIViewController {
         }
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(infoButton).inset(100)
+            make.top.equalTo(infoButton).inset(75)
             make.centerX.equalToSuperview()
         }
         view.addSubview(loader)

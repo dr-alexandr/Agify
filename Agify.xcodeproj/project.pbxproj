@@ -34,6 +34,7 @@
 		E2BBA365290BBF3F007AA03E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBA364290BBF3F007AA03E /* ViewController.swift */; };
 		E2BBA36A290BBF42007AA03E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2BBA369290BBF42007AA03E /* Assets.xcassets */; };
 		E2BBA36D290BBF42007AA03E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2BBA36B290BBF42007AA03E /* LaunchScreen.storyboard */; };
+		E2E204E829223A3C00A0EF0A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E204E729223A3C00A0EF0A /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		E2BBA369290BBF42007AA03E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2BBA36C290BBF42007AA03E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2BBA36E290BBF42007AA03E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2E204E729223A3C00A0EF0A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F27A029B057A53624BA436A8 /* Pods-Agify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agify.release.xcconfig"; path = "Target Support Files/Pods-Agify/Pods-Agify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				E234316F291E4626003F9538 /* LoginViewController.swift */,
+				E2E204E729223A3C00A0EF0A /* RegisterViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				E219D3B029113990007D730F /* Models.swift in Sources */,
 				E219D3A729113346007D730F /* NetworkError.swift in Sources */,
 				E20D073C290FD049005880B9 /* ViewModel.swift in Sources */,
+				E2E204E829223A3C00A0EF0A /* RegisterViewController.swift in Sources */,
 				E2BBA363290BBF3F007AA03E /* SceneDelegate.swift in Sources */,
 				E2879CA62912922A00629CD8 /* InfoViewModel.swift in Sources */,
 				E2343166291E4542003F9538 /* LoginCoordinator.swift in Sources */,

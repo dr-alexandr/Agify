@@ -26,25 +26,22 @@ final class LoginCoordinator: BaseCoordinator, CoordinatorFinishOutput {
         loginVC.login = { [unowned self] in
             self.finishFlow?()
         }
-//        loginVC.onRegister = { [unowned self] in
-//            self.showRegisterViewController()
-//        }
-//        loginVC.onChangePassword = { [unowned self, unowned loginVC] in
-//            self.showForgetPassword(module: loginVC)
-//        }
+        loginVC.goToRegisterPage = { [unowned self] in
+            self.showRegisterViewController()
+        }
         self.router.setRootModule(loginVC, hideBar: true)
     }
     
-//    private func showRegisterViewController() {
-//        let registerVC = self.viewControllerFactory.instantiateRegisterViewController()
-//        registerVC.onBack = { [unowned self] in
-//            self.router.popModule()
-//        }
-//        registerVC.onRegister = { [unowned self] in
-//            self.router.popModule()
-//        }
-//        self.router.push(registerVC)
-//    }
+    private func showRegisterViewController() {
+        let registerVC = self.viewControllerFactory.createRegisterViewController()
+        registerVC.goToLoginPage = { [unowned self] in
+            self.showLoginViewController()
+        }
+        registerVC.register = { [unowned self] in
+            self.finishFlow?()
+        }
+        self.router.setRootModule(registerVC, hideBar: true)
+    }
     
     // MARK: - Coordinator
     

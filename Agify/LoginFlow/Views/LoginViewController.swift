@@ -12,8 +12,10 @@ import SnapKit
 final class LoginViewController: UIViewController {
     
     var login: (() -> Void)?
+    var goToRegisterPage: (() -> Void)?
     
     let button = UIButton.getDefaultButton(title: "Login")
+    let goToRegisterButton = UIButton.getDefaultButton(title: "Registration", font: 17, backgroundColor: UIColor(named: "LightBrown") ?? .gray, titleColor: .brown, underline: 1.0)
     let usernameLabel = UILabel.getDefaultLabel(text: "Username")
     let usernameTextfield = UITextField.getDefaultTextField(placeholder: "Enter username...", textAlignment: .left, font: 20, textColor: .brown, cornerRadius: 25, borderStyle: .roundedRect)
     let passwordLabel = UILabel.getDefaultLabel(text: "Password")
@@ -59,15 +61,27 @@ final class LoginViewController: UIViewController {
             make.height.equalTo(50)
             make.leading.trailing.equalToSuperview().inset(50)
         }
+        view.addSubview(goToRegisterButton)
+        goToRegisterButton.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(button).inset(55)
+            make.height.equalTo(50)
+            make.trailing.equalToSuperview().inset(50)
+        }
     }
     
     private func setupUI() {
         view.backgroundColor = UIColor(named: "LightBrown")
         button.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
+        goToRegisterButton.addTarget(self, action: #selector(goToRegisterPressed), for: .touchUpInside)
     }
     
     @objc private func loginPressed() {
         self.login?()
+    }
+    
+    @objc private func goToRegisterPressed() {
+        self.goToRegisterPage?()
     }
     
 }
