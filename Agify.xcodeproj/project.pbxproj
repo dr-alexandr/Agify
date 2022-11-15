@@ -25,6 +25,8 @@
 		E24AA32A291CF17400784E8B /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24AA329291CF17400784E8B /* OnboardingViewController.swift */; };
 		E24AA32D291CF5CC00784E8B /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24AA32C291CF5CC00784E8B /* OnboardingCoordinator.swift */; };
 		E24AA330291CF94500784E8B /* LaunchInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24AA32F291CF94500784E8B /* LaunchInstructor.swift */; };
+		E263629D2923A28F001EB14C /* ToDoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E263629C2923A28F001EB14C /* ToDoCoordinator.swift */; };
+		E26362A82923A85B001EB14C /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26362A72923A85B001EB14C /* ToDoViewController.swift */; };
 		E279722E29101DCA000BA931 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279722D29101DCA000BA931 /* NetworkManager.swift */; };
 		E2879C9E2912672E00629CD8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2879C9D2912672E00629CD8 /* Logger.swift */; };
 		E2879CA229126CC000629CD8 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2879CA129126CC000629CD8 /* InfoViewController.swift */; };
@@ -58,6 +60,8 @@
 		E24AA329291CF17400784E8B /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		E24AA32C291CF5CC00784E8B /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		E24AA32F291CF94500784E8B /* LaunchInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInstructor.swift; sourceTree = "<group>"; };
+		E263629C2923A28F001EB14C /* ToDoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCoordinator.swift; sourceTree = "<group>"; };
+		E26362A72923A85B001EB14C /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		E279722D29101DCA000BA931 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E2879C9D2912672E00629CD8 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = "../../../../Swift & Xcode Stuff/Logger.swift"; sourceTree = "<group>"; };
 		E2879CA129126CC000629CD8 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 				E24AA32F291CF94500784E8B /* LaunchInstructor.swift */,
 				E2343165291E4542003F9538 /* LoginCoordinator.swift */,
 				E23DB62D291452CA0045F58C /* MainCoordinator.swift */,
+				E263629C2923A28F001EB14C /* ToDoCoordinator.swift */,
 				E24AA32C291CF5CC00784E8B /* OnboardingCoordinator.swift */,
 				E23DB62A2914510C0045F58C /* CoordinatorFactory.swift */,
 				E23DB61D29144AC40045F58C /* ViewControllerFactory.swift */,
@@ -204,6 +209,30 @@
 				E23DB62329144F5C0045F58C /* Router.swift */,
 			);
 			path = CoordinatorSetup;
+			sourceTree = "<group>";
+		};
+		E26362A42923A819001EB14C /* ToDoFlow */ = {
+			isa = PBXGroup;
+			children = (
+				E26362A52923A82A001EB14C /* Views */,
+				E26362A62923A835001EB14C /* ViewModels */,
+			);
+			path = ToDoFlow;
+			sourceTree = "<group>";
+		};
+		E26362A52923A82A001EB14C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E26362A72923A85B001EB14C /* ToDoViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E26362A62923A835001EB14C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E2BBA354290BBF3F007AA03E = {
@@ -232,6 +261,7 @@
 				E219D3B3291153F8007D730F /* ControllerExtensions.swift */,
 				E2343168291E45DD003F9538 /* LoginFlow */,
 				E24AA332291CFF9000784E8B /* MainFlow */,
+				E26362A42923A819001EB14C /* ToDoFlow */,
 				E24AA337291D005700784E8B /* OnboardingFlow */,
 				E219D3AE2911395E007D730F /* DTO */,
 				E219D3AC2911362A007D730F /* Manager */,
@@ -371,6 +401,7 @@
 				E2BBA365290BBF3F007AA03E /* ViewController.swift in Sources */,
 				E2BBA361290BBF3F007AA03E /* AppDelegate.swift in Sources */,
 				E279722E29101DCA000BA931 /* NetworkManager.swift in Sources */,
+				E263629D2923A28F001EB14C /* ToDoCoordinator.swift in Sources */,
 				E23DB63129150CA30045F58C /* ApplicationCoordinator.swift in Sources */,
 				E2879CA229126CC000629CD8 /* InfoViewController.swift in Sources */,
 				E24AA32A291CF17400784E8B /* OnboardingViewController.swift in Sources */,
@@ -385,6 +416,7 @@
 				E20D073C290FD049005880B9 /* ViewModel.swift in Sources */,
 				E2E204E829223A3C00A0EF0A /* RegisterViewController.swift in Sources */,
 				E2BBA363290BBF3F007AA03E /* SceneDelegate.swift in Sources */,
+				E26362A82923A85B001EB14C /* ToDoViewController.swift in Sources */,
 				E2879CA62912922A00629CD8 /* InfoViewModel.swift in Sources */,
 				E2343166291E4542003F9538 /* LoginCoordinator.swift in Sources */,
 				E23DB61A2914491C0045F58C /* Coordinator.swift in Sources */,

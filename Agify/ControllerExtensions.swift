@@ -72,6 +72,15 @@ extension UIButton {
         
         return button
     }
+    
+    static func getSFButton(sfSymbol: String) -> UIButton {
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 100, weight: .bold, scale: .large)
+        let largeBoldDoc = UIImage(systemName: sfSymbol, withConfiguration: largeConfig)
+        let button = UIButton(type: .system)
+        button.setImage(largeBoldDoc, for: .normal)
+        button.tintColor = UIColor(named: "LightBlue")
+        return button
+    }
 }
 
 // MARK: - UITextfield extension

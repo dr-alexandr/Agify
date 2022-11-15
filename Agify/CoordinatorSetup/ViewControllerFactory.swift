@@ -29,6 +29,11 @@ class ViewControllerFactory {
         return vc
     }
     
+    func createToDoViewController() -> ToDoViewController {
+        let vc = ToDoViewController()
+        return vc
+    }
+    
     func createOnboardingController() -> OnboardingViewController {
         let vc = OnboardingViewController()
         return vc

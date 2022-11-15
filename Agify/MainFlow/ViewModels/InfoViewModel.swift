@@ -31,6 +31,7 @@ final class InfoViewModel: InfoViewModelProtocol {
     
     init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
+        print("Allocation \(self)")
     }
     
     deinit {

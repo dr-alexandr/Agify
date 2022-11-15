@@ -25,6 +25,7 @@ final class InfoViewCotroller: UIViewController, UITableViewDelegate, UITableVie
     init(infoViewModel: InfoViewModelProtocol) {
         self.infoViewModel = infoViewModel
         super.init(nibName: nil, bundle: nil)
+        print("Allocation \(self)")
     }
     
     required init?(coder: NSCoder) {
@@ -60,7 +61,8 @@ final class InfoViewCotroller: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func bind() {
-        infoViewModel.onCompletion = { 
+        infoViewModel.onCompletion = { [weak self] in
+            guard let self = self else {return}
             self.tableView.reloadData()
             self.loader.stopAnimating()
         }

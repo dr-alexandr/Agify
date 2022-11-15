@@ -8,7 +8,7 @@
 import Foundation
 
 final class MainCoordinator: BaseCoordinator, CoordinatorFinishOutput {
-
+    
     // MARK: - CoordinatorFinishOutput
     
     var finishFlow: (() -> Void)?
@@ -26,6 +26,9 @@ final class MainCoordinator: BaseCoordinator, CoordinatorFinishOutput {
         vc.goToInfo = { [unowned self] in
             self.showInfoViewController()
         }
+        vc.goToDo = { [unowned self] in
+            self.showToDoList()
+        }
         self.router.setRootModule(vc, hideBar: true)
     }
     
@@ -39,6 +42,16 @@ final class MainCoordinator: BaseCoordinator, CoordinatorFinishOutput {
             self.finishFlow?()
         }
         self.router.push(vc)
+    }
+    
+    private func showToDoList() {
+        let coordinator = self.coordinatorFactory.makeToDoCoordinatorBox(router: self.router, coordinatorFactory: self.coordinatorFactory, viewControllerFactory: self.viewControllerFactory)
+        coordinator.finishFlow = { [unowned self, unowned coordinator] in
+            self.removeDependency(coordinator)
+            self.router.popModule()
+        }
+        self.addDependency(coordinator)
+        coordinator.start()
     }
     
     // MARK: - Coordinator

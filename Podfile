@@ -6,6 +6,7 @@ target 'Agify' do
   use_frameworks!
 
   # Pods for Agify
+pod 'RealmSwift'
 pod 'SnapKit', '~> 5.6.0'
 pod 'SwiftyJSON'
 

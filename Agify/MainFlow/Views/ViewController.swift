@@ -15,11 +15,13 @@ final class ViewController: UIViewController {
     private let titleLabel = UILabel.getDefaultLabel(text: "Agify", font: 50)
     private let button = UIButton.getDefaultButton(title: "Generate")
     private let infoButton = UIButton.getDefaultButton(title: "Info")
+    private let toDoButton = UIButton.getSFButton(sfSymbol: "arrow.right.circle.fill")
     private let textfield = UITextField.getDefaultTextField(placeholder: "Type a name here...")
     private let loader = UIActivityIndicatorView()
     
     // MARK: - Properties
     var goToInfo: (() -> Void)?
+    var goToDo: (() -> Void)?
     private var viewModel: ViewModelProtocol
     
     init(viewModel: ViewModelProtocol) {
@@ -80,6 +82,7 @@ final class ViewController: UIViewController {
         // Button target setup
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         infoButton.addTarget(self, action: #selector(infoTapped), for: .touchUpInside)
+        toDoButton.addTarget(self, action: #selector(toToDo), for: .touchUpInside)
     }
     
     // MARK: - Constraints
@@ -113,6 +116,13 @@ final class ViewController: UIViewController {
             make.height.equalTo(50)
             make.width.equalTo(100)
         }
+        view.addSubview(toDoButton)
+        toDoButton.snp.makeConstraints { (make) in
+            make.height.equalTo(50)
+            make.width.equalTo(50)
+            make.trailing.equalToSuperview().inset(50)
+            make.centerY.equalTo(responseLabel)
+        }
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(infoButton).inset(75)
@@ -139,5 +149,10 @@ final class ViewController: UIViewController {
     @objc func infoTapped() {
         view.endEditing(true)
         self.goToInfo?()
+    }
+    
+    @objc func toToDo() {
+        view.endEditing(true)
+        self.goToDo?()
     }
 }
