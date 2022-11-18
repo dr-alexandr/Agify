@@ -107,9 +107,10 @@ extension UITextField {
 
 // MARK: - UITableViewCell extension
 extension UITableViewCell {
-    static func getDefaultTableCell() -> UITableViewCell {
+    static func getDefaultTableCell(selection: UITableViewCell.SelectionStyle = .none) -> UITableViewCell {
         let tableCell = UITableViewCell()
-        tableCell.selectionStyle = .none
+        tableCell.selectionStyle = selection
+        tableCell.tintColor = .brown
         tableCell.backgroundColor = UIColor(named: "LightBrown")
         tableCell.textLabel?.textColor = UIColor.brown
         tableCell.textLabel?.numberOfLines = 0
