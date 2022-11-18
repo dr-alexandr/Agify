@@ -30,7 +30,7 @@ class ViewControllerFactory {
     }
     
     func createToDoViewController() -> ToDoViewController {
-        let vc = ToDoViewController()
+        let vc = ToDoViewController(toDoViewModel: ToDoViewModel())
         return vc
     }
     

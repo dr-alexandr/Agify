@@ -12,13 +12,6 @@ import RealmSwift
 final class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Properties
-    let realm = try! Realm()
-    var tasks: Results<Task>? {
-        get {
-            return realm.objects(Task.self).sorted(byKeyPath: "done", ascending: true)
-        }
-        set {}
-    }
     var onBack: (() -> Void)?
     
     // MARK: - UIElements
@@ -26,6 +19,18 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
     let backButton = UIButton.getSFButton(sfSymbol: "arrow.left.circle.fill")
     let addButton = UIButton.getSFButton(sfSymbol: "plus.circle.fill")
     let titleLabel = UILabel.getDefaultLabel(text: "ToDo List", font: 25)
+    
+    let toDoViewModel: ToDoViewModel
+    init(toDoViewModel: ToDoViewModel) {
+        self.toDoViewModel = toDoViewModel
+        super.init(nibName: nil, bundle: nil)
+        print("Allocation \(self)")
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -73,16 +78,16 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
     private func setupUI() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        tableView.backgroundColor = UIColor(named: "LightBrown")
+        self.tableView.backgroundColor = UIColor(named: "LightBrown")
         self.tableView.tableFooterView = UIView()
-        view.backgroundColor = UIColor(named: "LightBrown")
+        self.view.backgroundColor = UIColor(named: "LightBrown")
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
     }
     
     private func loadData() {
-            tasks = realm.objects(Task.self)
-            tableView.reloadData()
+        toDoViewModel.loadData()
+        tableView.reloadData()
     }
     
     // MARK: - Actions
@@ -91,74 +96,32 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @objc func addButtonPressed() {
-        var textField = UITextField()
-        let alert = UIAlertController(title: "Add Task", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            do {
-                try self.realm.write {
-                    let newTask = Task()
-                    newTask.title = textField.text!
-                    newTask.dateCreated = Date()
-                    self.realm.add(newTask)
-                }
-            } catch {
-                print("Error writing new Item")
-            }
+        let alert = toDoViewModel.addNewTask() {
             self.tableView.reloadData()
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(action)
-        alert.addAction(cancel)
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Enter new Category..."
-            textField = alertTextField
-        }
-        
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil) 
     }
     
     // MARK: - TableView Setup
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks?.count ?? 0
+        return toDoViewModel.getTaskCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.getDefaultTableCell(selection: .default)
-        cell.textLabel?.text = tasks?[indexPath.row].title
-        cell.accessoryType = tasks?[indexPath.row].done ?? false ? .checkmark : .none
-        if tasks?[indexPath.row].done == true {
-            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: cell.textLabel?.text ?? "")
-            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-            cell.textLabel?.attributedText = attributeString
-        }
+        let cell = toDoViewModel.getCell(indexPath: indexPath)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tasks?[indexPath.row] else {return}
-        do {
-            try realm.write {
-                cell.done = !cell.done
-            }
-        } catch {
-            print(error)
-        }
-//        tableView.reloadData()
-        UIView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
+        toDoViewModel.useCheckmark(indexPath: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
+        UIView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete{
-            if let task = tasks?[indexPath.row] {
-                do {
-                    try realm.write {
-                        realm.delete(task)
-                    }
-                    tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-                } catch {
-                    print(error)
-                }
+            toDoViewModel.deleteCell(indexPath: indexPath) {
+                tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             }
         }
     }
