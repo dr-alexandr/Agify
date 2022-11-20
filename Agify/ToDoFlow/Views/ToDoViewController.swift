@@ -20,8 +20,8 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
     let addButton = UIButton.getSFButton(sfSymbol: "plus.circle.fill")
     let titleLabel = UILabel.getDefaultLabel(text: "ToDo List", font: 25)
     
-    let toDoViewModel: ToDoViewModel
-    init(toDoViewModel: ToDoViewModel) {
+    let toDoViewModel: ToDoViewModelProtocol
+    init(toDoViewModel: ToDoViewModelProtocol) {
         self.toDoViewModel = toDoViewModel
         super.init(nibName: nil, bundle: nil)
         print("Allocation \(self)")

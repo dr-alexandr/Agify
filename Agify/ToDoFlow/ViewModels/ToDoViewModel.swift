@@ -8,7 +8,16 @@
 import UIKit
 import RealmSwift
 
-final class ToDoViewModel{
+protocol ToDoViewModelProtocol {
+    func loadData()
+    func getTaskCount() -> Int
+    func addNewTask(compeletion: @escaping (() -> Void)) -> UIAlertController
+    func useCheckmark(indexPath: IndexPath)
+    func getCell(indexPath: IndexPath) -> UITableViewCell
+    func deleteCell(indexPath: IndexPath, completion: () -> Void )
+}
+
+final class ToDoViewModel: ToDoViewModelProtocol {
      
     private let realm = try! Realm()
     private var tasks: Results<Task>? {
