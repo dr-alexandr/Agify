@@ -25,6 +25,7 @@ protocol API {
     var baseURL: String { get }
     var parameters: [URLQueryItem] { get }
     var method: HTTPMethod { get }
+    var path: String { get }
 }
 
 // MARK: - ApifyAPI
@@ -60,6 +61,13 @@ enum ApifyAPI: API {
         switch self {
         case .getIP:
             return .get
+        }
+    }
+    
+    var path: String {
+        switch self {
+        case .getIP:
+            return ""
         }
     }
 }
@@ -108,6 +116,7 @@ enum InfoApi: API {
 
 // MARK: - AgifyAPI
 enum AgifyAPI: API {
+
     case getAgebyName(name: String)
     
     var scheme: HTTPScheme {
@@ -140,6 +149,13 @@ enum AgifyAPI: API {
             return .get
         }
     }
+    
+    var path: String {
+        switch self {
+        case .getAgebyName:
+            return ""
+        }
+    }
 }
 
 // MARK: - BuildURL Func
@@ -148,6 +164,7 @@ private func buildURL(endpoint: API) -> URLComponents {
     components.scheme = endpoint.scheme.rawValue
     components.host = endpoint.baseURL
     components.queryItems = endpoint.parameters
+    components.path = endpoint.path
     return components
 }
 

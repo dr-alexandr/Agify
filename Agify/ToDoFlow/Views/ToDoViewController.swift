@@ -51,7 +51,7 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
             make.height.equalTo(50)
             make.width.equalTo(50)
             make.leading.equalToSuperview().inset(20)
-            make.top.equalToSuperview().inset(30)
+            make.top.equalToSuperview().inset(50)
         }
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
@@ -64,7 +64,7 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
             make.height.equalTo(50)
             make.width.equalTo(50)
             make.trailing.equalToSuperview().inset(20)
-            make.top.equalToSuperview().inset(30)
+            make.centerY.equalTo(backButton)
         }
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
