@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum HTTPMethod: String {
     case delete = "DELETE"
@@ -116,7 +117,7 @@ enum InfoApi: API {
 
 // MARK: - AgifyAPI
 enum AgifyAPI: API {
-
+    
     case getAgebyName(name: String)
     
     var scheme: HTTPScheme {
@@ -182,31 +183,22 @@ final class NetworkManager: NetworkManagerProtocol {
             completion(.failure(NetworkError.outdated))
             return
         }
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = endpoint.method.rawValue
-        let session = URLSession(configuration: .default)
-        let dataTask = session.dataTask(with: urlRequest) {
-            data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                print("Unknown error: \(error)")
-                return
-            }
-            guard response != nil, let data = data else {
-                return
-            }
-            if let responseObject = try? JSONDecoder().decode(T.self, from: data) {
-                DispatchQueue.main.async {
-                    completion(.success(responseObject))
+        AF.request(url).validate().responseData { (data) in
+            switch data.result {
+            case .success(_):
+                let decoder = JSONDecoder()
+                if let jsonData = data.data {
+                    let result = try! decoder.decode(T.self, from: jsonData)
+                    DispatchQueue.main.async {
+                        completion(.success(result))
+                    }
                 }
-            } else {
-                let error = NSError(domain: "com.AryamanSharda",
-                                    code: 200,
-                                    userInfo: [NSLocalizedDescriptionKey: "Failed"])
-                completion(.failure(error))
+                break
+            case .failure(_):
+                completion(.failure(NetworkError.noData))
+                break
             }
         }
-        dataTask.resume()
     }
     
     deinit {

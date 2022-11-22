@@ -9,5 +9,6 @@ target 'Agify' do
 pod 'RealmSwift'
 pod 'SnapKit', '~> 5.6.0'
 pod 'SwiftyJSON'
+pod 'Alamofire'
 
 end
