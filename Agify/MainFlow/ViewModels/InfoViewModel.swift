@@ -39,7 +39,7 @@ final class InfoViewModel: InfoViewModelProtocol {
     }
     
     func getIP() {
-        let endpoint = ApifyAPI.getIP
+        let endpoint = API.getIP
         networkManager.request(endpoint: endpoint) { (result: Result<ApifyDTO, Error>) in
             switch result {
             case .success(let response):
@@ -52,7 +52,7 @@ final class InfoViewModel: InfoViewModelProtocol {
     }
     
     func getInfo(_ ip: String) {
-        let endpoint = InfoApi.getInfoByIP(ip: ip)
+        let endpoint = API.getInfoByIP(ip: ip)
         networkManager.request(endpoint: endpoint) { (result: Result<InfoDTO,Error>) in
             switch result {
             case .success(let response):

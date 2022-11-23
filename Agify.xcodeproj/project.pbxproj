@@ -27,11 +27,11 @@
 		E24AA330291CF94500784E8B /* LaunchInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24AA32F291CF94500784E8B /* LaunchInstructor.swift */; };
 		E263629D2923A28F001EB14C /* ToDoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E263629C2923A28F001EB14C /* ToDoCoordinator.swift */; };
 		E26362A82923A85B001EB14C /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26362A72923A85B001EB14C /* ToDoViewController.swift */; };
-		E279722E29101DCA000BA931 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279722D29101DCA000BA931 /* NetworkManager.swift */; };
 		E2879C9E2912672E00629CD8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2879C9D2912672E00629CD8 /* Logger.swift */; };
 		E2879CA229126CC000629CD8 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2879CA129126CC000629CD8 /* InfoViewController.swift */; };
 		E2879CA62912922A00629CD8 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2879CA52912922A00629CD8 /* InfoViewModel.swift */; };
 		E2996F6629279FE200D456BE /* ToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2996F6529279FE200D456BE /* ToDoViewModel.swift */; };
+		E2B02DD4292E25A90053009C /* MoyaNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B02DD3292E25A90053009C /* MoyaNetworkManager.swift */; };
 		E2BBA361290BBF3F007AA03E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBA360290BBF3F007AA03E /* AppDelegate.swift */; };
 		E2BBA363290BBF3F007AA03E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBA362290BBF3F007AA03E /* SceneDelegate.swift */; };
 		E2BBA365290BBF3F007AA03E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBA364290BBF3F007AA03E /* ViewController.swift */; };
@@ -63,11 +63,11 @@
 		E24AA32F291CF94500784E8B /* LaunchInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInstructor.swift; sourceTree = "<group>"; };
 		E263629C2923A28F001EB14C /* ToDoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCoordinator.swift; sourceTree = "<group>"; };
 		E26362A72923A85B001EB14C /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
-		E279722D29101DCA000BA931 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E2879C9D2912672E00629CD8 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = "../../../../Swift & Xcode Stuff/Logger.swift"; sourceTree = "<group>"; };
 		E2879CA129126CC000629CD8 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		E2879CA52912922A00629CD8 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		E2996F6529279FE200D456BE /* ToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewModel.swift; sourceTree = "<group>"; };
+		E2B02DD3292E25A90053009C /* MoyaNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaNetworkManager.swift; sourceTree = "<group>"; };
 		E2BBA35D290BBF3F007AA03E /* Agify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Agify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BBA360290BBF3F007AA03E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2BBA362290BBF3F007AA03E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		E219D3AC2911362A007D730F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				E279722D29101DCA000BA931 /* NetworkManager.swift */,
+				E2B02DD3292E25A90053009C /* MoyaNetworkManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -403,7 +403,6 @@
 				E219D3B4291153F8007D730F /* ControllerExtensions.swift in Sources */,
 				E2BBA365290BBF3F007AA03E /* ViewController.swift in Sources */,
 				E2BBA361290BBF3F007AA03E /* AppDelegate.swift in Sources */,
-				E279722E29101DCA000BA931 /* NetworkManager.swift in Sources */,
 				E263629D2923A28F001EB14C /* ToDoCoordinator.swift in Sources */,
 				E23DB63129150CA30045F58C /* ApplicationCoordinator.swift in Sources */,
 				E2879CA229126CC000629CD8 /* InfoViewController.swift in Sources */,
@@ -417,6 +416,7 @@
 				E2E204EC2922558500A0EF0A /* KeychainManager.swift in Sources */,
 				E219D3B029113990007D730F /* Models.swift in Sources */,
 				E219D3A729113346007D730F /* NetworkError.swift in Sources */,
+				E2B02DD4292E25A90053009C /* MoyaNetworkManager.swift in Sources */,
 				E20D073C290FD049005880B9 /* ViewModel.swift in Sources */,
 				E2E204E829223A3C00A0EF0A /* RegisterViewController.swift in Sources */,
 				E2BBA363290BBF3F007AA03E /* SceneDelegate.swift in Sources */,

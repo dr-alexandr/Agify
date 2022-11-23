@@ -37,7 +37,7 @@ final class ViewModel: ViewModelProtocol {
     
     func getAge(name: String,
                 onComplete: @escaping (SearchModel) -> Void) {
-        let endpoint = AgifyAPI.getAgebyName(name: name)
+        let endpoint = API.getAgebyName(name: name)
         networkManager.request(endpoint: endpoint) {
             (result: Result<SearchModelDTO, Error>) in
             
