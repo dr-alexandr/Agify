@@ -6,10 +6,11 @@
 //
 
 import UIKit
-import RealmSwift
+import CoreData
 
 protocol ToDoViewModelProtocol {
     func loadData()
+    func saveTasks()
     func getTaskCount() -> Int
     func addNewTask(compeletion: @escaping (() -> Void)) -> UIAlertController
     func useCheckmark(indexPath: IndexPath)
@@ -19,16 +20,26 @@ protocol ToDoViewModelProtocol {
 
 final class ToDoViewModel: ToDoViewModelProtocol {
      
-    private let realm = try! Realm()
-    private var tasks: Results<Task>? {
-        get {
-            return realm.objects(Task.self).sorted(byKeyPath: "done", ascending: true)
-        }
-        set {}
-    }
+    private var tasks: [Task]? = []
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func loadData() {
-        tasks = realm.objects(Task.self)
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        let checkmarkSorting = NSSortDescriptor(key:"done", ascending:true)
+        request.sortDescriptors = [checkmarkSorting]
+        do {
+            tasks = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
+    
+    func saveTasks() {
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
     }
     
     func getTaskCount() -> Int {
@@ -39,16 +50,11 @@ final class ToDoViewModel: ToDoViewModelProtocol {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add Task", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            do {
-                try self.realm.write {
-                    let newTask = Task()
-                    newTask.title = textField.text!
-                    newTask.dateCreated = Date()
-                    self.realm.add(newTask)
-                }
-            } catch {
-                print("Error writing new Item")
-            }
+            let newTask = Task(context: self.context)
+            newTask.title = textField.text!
+            newTask.done = false
+            self.tasks?.append(newTask)
+            self.saveTasks()
             DispatchQueue.main.async {compeletion()}
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -63,13 +69,9 @@ final class ToDoViewModel: ToDoViewModelProtocol {
     
     func useCheckmark(indexPath: IndexPath) {
         guard let cell = tasks?[indexPath.row] else {return}
-        do {
-            try realm.write {
-                cell.done = !cell.done
-            }
-        } catch {
-            print(error)
-        }
+        cell.done = !cell.done
+        saveTasks()
+        loadData()
     }
     
     func getCell(indexPath: IndexPath) -> UITableViewCell {
@@ -84,16 +86,12 @@ final class ToDoViewModel: ToDoViewModelProtocol {
         return cell
     }
     
-    func deleteCell(indexPath: IndexPath, completion: () -> Void ) {
+    func deleteCell(indexPath: IndexPath, completion: () -> Void) {
         if let task = tasks?[indexPath.row] {
-            do {
-                try realm.write {
-                    realm.delete(task)
-                }
-                completion()
-            } catch {
-                print(error)
-            }
+            tasks?.remove(at: indexPath.row)
+            context.delete(task)
+            saveTasks()
+            completion()
         }
     }
     

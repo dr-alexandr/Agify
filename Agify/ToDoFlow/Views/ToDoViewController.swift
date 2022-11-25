@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import RealmSwift
 
 final class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     

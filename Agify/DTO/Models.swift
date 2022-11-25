@@ -6,14 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
-
-// MARK: - Realm Objects
-final class Task: Object {
-    @objc dynamic var title: String = ""
-    @objc dynamic var done: Bool = false
-    @objc dynamic var dateCreated: Date?
-}
 
 // MARK: - Agify SearchModel
 struct SearchModelDTO: Decodable {
