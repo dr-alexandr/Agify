@@ -89,50 +89,100 @@ final class ViewController: UIViewController {
     // MARK: - Constraints
     
     private func setupLayout() {
+        
         view.addSubview(responseLabel)
-        responseLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(50)
-        }
         view.addSubview(button)
-        button.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(100)
-            make.leading.trailing.equalToSuperview().inset(50)
-            make.height.equalTo(50)
-            
-        }
         view.addSubview(textfield)
-        textfield.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(50)
-            make.bottom.equalTo(button.snp.bottom).inset(100)
-            make.height.equalTo(50)
-        }
         view.addSubview(infoButton)
-        infoButton.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(100)
-            make.height.equalTo(50)
-            make.width.equalTo(100)
-        }
         view.addSubview(toDoButton)
-        toDoButton.snp.makeConstraints { (make) in
-            make.height.equalTo(50)
-            make.width.equalTo(50)
-            make.trailing.equalToSuperview().inset(50)
-            make.centerY.equalTo(responseLabel)
-        }
         view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(infoButton).inset(75)
-            make.centerX.equalToSuperview()
-        }
         view.addSubview(loader)
-        loader.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.center.equalTo(responseLabel)
+        
+        // if width is compact
+        if self.traitCollection.horizontalSizeClass.rawValue == 1 {
+            responseLabel.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.centerY.equalToSuperview()
+                make.leading.trailing.equalToSuperview().inset(50)
+            }
+            button.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.bottom.equalToSuperview().inset(100)
+                make.leading.trailing.equalToSuperview().inset(50)
+                make.height.equalTo(50)
+                
+            }
+            textfield.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.leading.trailing.equalToSuperview().inset(50)
+                make.bottom.equalTo(button.snp.bottom).inset(100)
+                make.height.equalTo(50)
+            }
+            infoButton.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.top.equalToSuperview().inset(100)
+                make.height.equalTo(50)
+                make.width.equalTo(100)
+            }
+            toDoButton.snp.makeConstraints { (make) in
+                make.height.equalTo(50)
+                make.width.equalTo(50)
+                make.trailing.equalToSuperview().inset(50)
+                make.centerY.equalTo(responseLabel)
+            }
+            titleLabel.snp.makeConstraints { make in
+                make.top.equalTo(infoButton).inset(75)
+                make.centerX.equalToSuperview()
+            }
+            loader.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.center.equalTo(responseLabel)
+            }
+        } else {
+            responseLabel.font = UIFont.boldSystemFont(ofSize: 200)
+            responseLabel.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.centerY.equalToSuperview()
+                make.leading.trailing.equalToSuperview().inset(50)
+            }
+            button.layer.cornerRadius = 50
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
+            button.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.bottom.equalToSuperview().inset(100)
+                make.width.equalTo(500)
+                make.height.equalTo(100)
+            }
+            textfield.font = UIFont.boldSystemFont(ofSize: 50)
+            textfield.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.width.equalTo(500)
+                make.bottom.equalTo(button.snp.bottom).inset(125)
+                make.height.equalTo(100)
+            }
+            infoButton.layer.cornerRadius = 50
+            infoButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
+            infoButton.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.top.equalToSuperview().inset(100)
+                make.height.equalTo(100)
+                make.width.equalTo(150)
+            }
+            toDoButton.snp.makeConstraints { (make) in
+                make.height.equalTo(100)
+                make.width.equalTo(100)
+                make.trailing.equalToSuperview().inset(100)
+                make.centerY.equalTo(responseLabel)
+            }
+            titleLabel.font = UIFont.boldSystemFont(ofSize: 100)
+            titleLabel.snp.makeConstraints { make in
+                make.top.equalTo(infoButton).inset(125)
+                make.centerX.equalToSuperview()
+            }
+            loader.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.center.equalTo(responseLabel)
+            }
         }
         
     }
