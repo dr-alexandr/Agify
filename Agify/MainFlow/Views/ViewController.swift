@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 import SnapKit
 
 final class ViewController: UIViewController {
@@ -140,10 +141,11 @@ final class ViewController: UIViewController {
     @objc func buttonPressed() {
         view.endEditing(true)
         guard let text = textfield.text else {return}
-        guard text != "" else {self.responseLabel.text = "🕵🏻"; return}
+        guard text != "" else {resetAnimated(responseLabel); return}
         self.responseLabel.isHidden = true
         loader.startAnimating()
         viewModel.getName(text)
+        buttonAnimated(button)
     }
     
     @objc func infoTapped() {

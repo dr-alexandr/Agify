@@ -126,3 +126,23 @@ extension UIViewController: Presentable {
     }
 }
 
+// MARK: - UIViewController animations
+extension UIViewController {
+    func buttonAnimated(_ button: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            button.backgroundColor = UIColor(cgColor: CGColor(red: 95/255, green: 141/255, blue: 78/255, alpha: 1))
+            button.frame.origin.y += 5
+        } completion: { _ in
+            UIView.animate(withDuration: 0.2) {
+                button.backgroundColor = UIColor(named: "LightBlue")
+                button.frame.origin.y -= 5
+            }
+        }
+    }
+    
+    func resetAnimated(_ responseLabel: UILabel) {
+        UIView.transition(with: responseLabel, duration: 0.5, options: .transitionFlipFromRight, animations: {
+            responseLabel.text = "🕵🏻"
+        }, completion: nil)
+    }
+}

@@ -108,8 +108,9 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = toDoViewModel.getCell(indexPath: indexPath)
-        return cell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell")
+        cell = toDoViewModel.getCell(indexPath: indexPath)
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -124,5 +125,10 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
                 tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             }
         }
+    }
+    
+    private func registerTableViewCells() {
+        let toDoCell = UINib(nibName: "ToDoCell", bundle: nil)
+        self.tableView.register(toDoCell, forCellReuseIdentifier: "ToDoCell")
     }
 }
