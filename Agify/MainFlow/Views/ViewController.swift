@@ -17,6 +17,7 @@ final class ViewController: UIViewController {
     private let button = UIButton.getDefaultButton(title: "Generate")
     private let infoButton = UIButton.getDefaultButton(title: "Info")
     private let toDoButton = UIButton.getSFButton(sfSymbol: "arrow.right.circle.fill")
+    private let settingsButton = UIButton.getSFButton(sfSymbol: "mappin.circle.fill")
     private let textfield = UITextField.getDefaultTextField(placeholder: String.locString("Type a name here..."))
     private let loader = UIActivityIndicatorView()
     
@@ -84,6 +85,7 @@ final class ViewController: UIViewController {
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         infoButton.addTarget(self, action: #selector(infoTapped), for: .touchUpInside)
         toDoButton.addTarget(self, action: #selector(toToDo), for: .touchUpInside)
+        settingsButton.addTarget(self, action: #selector(settingsButtonTouched), for: .touchUpInside)
     }
     
     // MARK: - Constraints
@@ -95,6 +97,7 @@ final class ViewController: UIViewController {
         view.addSubview(textfield)
         view.addSubview(infoButton)
         view.addSubview(toDoButton)
+        view.addSubview(settingsButton)
         view.addSubview(titleLabel)
         view.addSubview(loader)
         
@@ -127,6 +130,12 @@ final class ViewController: UIViewController {
                 make.height.equalTo(50)
                 make.width.equalTo(50)
                 make.trailing.equalToSuperview().inset(50)
+                make.centerY.equalTo(responseLabel)
+            }
+            settingsButton.snp.makeConstraints { (make) in
+                make.height.equalTo(50)
+                make.width.equalTo(50)
+                make.leading.equalToSuperview().inset(50)
                 make.centerY.equalTo(responseLabel)
             }
             titleLabel.snp.makeConstraints { make in
@@ -173,6 +182,12 @@ final class ViewController: UIViewController {
                 make.trailing.equalToSuperview().inset(100)
                 make.centerY.equalTo(responseLabel)
             }
+            settingsButton.snp.makeConstraints { (make) in
+                make.height.equalTo(100)
+                make.width.equalTo(100)
+                make.leading.equalToSuperview().inset(100)
+                make.centerY.equalTo(responseLabel)
+            }
             titleLabel.font = UIFont.boldSystemFont(ofSize: 100)
             titleLabel.snp.makeConstraints { make in
                 make.top.equalTo(infoButton).inset(125)
@@ -205,5 +220,10 @@ final class ViewController: UIViewController {
     @objc func toToDo() {
         view.endEditing(true)
         self.goToDo?()
+    }
+    
+    @objc func settingsButtonTouched() {
+        let alert = viewModel.changeLanguage()
+        present(alert, animated: true)
     }
 }

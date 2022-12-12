@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ViewModelProtocol {
     func getAge(name: String,
@@ -13,6 +14,7 @@ protocol ViewModelProtocol {
     
     func getName(_ name: String)
     var onCompletion: ((SearchModel) -> Void )? { get set }
+    func changeLanguage() -> UIAlertController
 }
 
 final class ViewModel: ViewModelProtocol {
@@ -49,6 +51,22 @@ final class ViewModel: ViewModelProtocol {
                 Log.e(error.localizedDescription)
             }
         }
+    }
+    
+    func changeLanguage() -> UIAlertController {
+        let alertController = UIAlertController (title: String.locString("Change current language"), message: String.locString("Go to Settings?"), preferredStyle: .alert)
+        let settingsAction = UIAlertAction(title: String.locString("Settings"), style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                    return
+                }
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl)
+                }
+            }
+            alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: String.locString("Cancel"), style: .destructive, handler: nil)
+            alertController.addAction(cancelAction)
+        return alertController
     }
 }
 

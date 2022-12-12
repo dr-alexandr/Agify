@@ -33,5 +33,10 @@
 "Enter password..." = "Введіть пароль";
 "Hello! This app was made to test my coding skills. Test it!" = "Привіт! Цей додаток я створив просто для для того аби навчитись кодити. Велкам, тестуй!";
 "Start!" = "Вперед!";
+"Change current language" = "Змінити поточну мову";
+"Go to Settings?" = "Перейти до налаштувань?";
+"Settings" = "Налаштування";
+"Cancel" = "Відмнити";
+
 
 

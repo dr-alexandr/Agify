@@ -51,7 +51,7 @@ final class ToDoViewModel: ToDoViewModelProtocol {
             }
             DispatchQueue.main.async {compeletion()}
         }
-        let cancel = UIAlertAction(title: String.locString("Cancel"), style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: String.locString("Cancel"), style: .destructive, handler: nil)
         alert.addAction(action)
         alert.addAction(cancel)
         alert.addTextField { (alertTextField) in
