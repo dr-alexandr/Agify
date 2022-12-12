@@ -14,7 +14,7 @@ final class InfoViewCotroller: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - UIElements
     let tableView = UITableView()
     let backButton = UIButton.getDefaultButton(title: "Go back")
-    let logoutButton = UIButton.getDefaultButton(title: "LogOut", backgroundColor: .red)
+    let logoutButton = UIButton.getDefaultButton(title: "LogOut", backgroundColor: UIColor(red: 156/255, green: 37/255, blue: 77/255, alpha: 1))
     let loader = UIActivityIndicatorView()
     
     // MARK: - Properties
@@ -71,28 +71,59 @@ final class InfoViewCotroller: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - Constraints
     func setupLayout() {
         view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
         view.addSubview(logoutButton)
-        logoutButton.snp.makeConstraints { (make) in
-            make.trailing.leading.equalToSuperview().inset(50)
-            make.height.equalTo(50)
-            make.bottom.equalToSuperview().inset(50)
-        }
         view.addSubview(backButton)
-        backButton.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.height.equalTo(50)
-            make.leading.trailing.equalToSuperview().inset(50)
-            make.bottom.equalTo(logoutButton).inset(75)
-        }
         view.addSubview(loader)
-        loader.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.bottom.equalTo(backButton).inset(75)
+        
+        if self.traitCollection.horizontalSizeClass.rawValue == 1 {
+            tableView.snp.makeConstraints { (make) in
+                make.top.equalToSuperview()
+                make.leading.trailing.equalToSuperview()
+                make.bottom.equalToSuperview()
+            }
+            logoutButton.snp.makeConstraints { (make) in
+                make.trailing.leading.equalToSuperview().inset(50)
+                make.height.equalTo(50)
+                make.bottom.equalToSuperview().inset(50)
+            }
+            backButton.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.height.equalTo(50)
+                make.leading.trailing.equalToSuperview().inset(50)
+                make.bottom.equalTo(logoutButton).inset(75)
+            }
+            loader.snp.makeConstraints { (make) in
+                make.centerX.equalTo(view)
+                make.bottom.equalTo(backButton).inset(75)
+            }
+        } else {
+            tableView.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().inset(100)
+                make.leading.trailing.equalToSuperview().inset(200)
+                make.bottom.equalToSuperview()
+            }
+            logoutButton.layer.cornerRadius = 40
+            logoutButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
+            logoutButton.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.height.equalTo(80)
+                make.width.equalTo(500)
+                make.bottom.equalToSuperview().inset(100)
+            }
+            backButton.layer.cornerRadius = 40
+            backButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
+            backButton.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.height.equalTo(80)
+                make.width.equalTo(500)
+                make.bottom.equalTo(logoutButton).inset(100)
+            }
+            loader.transform = CGAffineTransform.init(scaleX: 2, y: 2)
+            loader.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.width.height.equalTo(150)
+                make.bottom.equalTo(backButton).inset(200)
+            }
         }
     }
     
@@ -112,7 +143,10 @@ final class InfoViewCotroller: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableCell = UITableViewCell.getDefaultTableCell()
-        tableCell.textLabel?.text = infoViewModel.getCellTitle(by: indexPath)
+        tableCell.textLabel?.text = String.locString(infoViewModel.getCellTitle(by: indexPath))
+        if self.traitCollection.horizontalSizeClass.rawValue != 1 {
+            tableCell.textLabel?.font = UIFont.systemFont(ofSize: 25)
+        }
         return tableCell
     }
     

@@ -13,11 +13,11 @@ final class ViewController: UIViewController {
     
     // MARK: - UIElements
     private let responseLabel = UILabel.getDefaultLabel(text: "🕵🏻", font: 75)
-    private let titleLabel = UILabel.getDefaultLabel(text: "Agify", font: 50)
+    private let titleLabel = UILabel.getDefaultLabel(text: String.locString("Agify"), font: 50)
     private let button = UIButton.getDefaultButton(title: "Generate")
     private let infoButton = UIButton.getDefaultButton(title: "Info")
     private let toDoButton = UIButton.getSFButton(sfSymbol: "arrow.right.circle.fill")
-    private let textfield = UITextField.getDefaultTextField(placeholder: "Type a name here...")
+    private let textfield = UITextField.getDefaultTextField(placeholder: String.locString("Type a name here..."))
     private let loader = UIActivityIndicatorView()
     
     // MARK: - Properties
@@ -110,7 +110,6 @@ final class ViewController: UIViewController {
                 make.bottom.equalToSuperview().inset(100)
                 make.leading.trailing.equalToSuperview().inset(50)
                 make.height.equalTo(50)
-                
             }
             textfield.snp.makeConstraints { make in
                 make.centerX.equalToSuperview()

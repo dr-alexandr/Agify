@@ -14,7 +14,7 @@ class OnboardingViewController: UIViewController {
     var onboardingCompleted: (() -> Void)?
     
     // MARK: - UIElements
-    private let onboardingText = UILabel.getDefaultLabel(text: "Hello! This app was made to test my coding skills. Test it!")
+    private let onboardingText = UILabel.getDefaultLabel(text: String.locString("Hello! This app was made to test my coding skills. Test it!"))
     private let onboardingButton = UIButton.getDefaultButton(title: "Start!", backgroundColor: .darkGray, titleColor: .white)
     
     // MARK: - Life Cycle
@@ -38,17 +38,36 @@ class OnboardingViewController: UIViewController {
     // MARK: - Constraints
     private func setConstraints() {
         view.addSubview(onboardingButton)
-        onboardingButton.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.trailing.leading.equalToSuperview().inset(50)
-            make.bottom.equalToSuperview().inset(100)
-        }
         view.addSubview(onboardingText)
-        onboardingText.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.trailing.leading.equalToSuperview().inset(50)
-            make.centerY.equalToSuperview()
+        
+        if self.traitCollection.horizontalSizeClass.rawValue == 1 {
+            onboardingButton.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.trailing.leading.equalToSuperview().inset(50)
+                make.bottom.equalToSuperview().inset(100)
+            }
+            onboardingText.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.trailing.leading.equalToSuperview().inset(50)
+                make.centerY.equalToSuperview()
+            }
+        } else {
+            onboardingButton.layer.cornerRadius = 50
+            onboardingButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
+            onboardingButton.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.bottom.equalToSuperview().inset(100)
+                make.width.equalTo(500)
+                make.height.equalTo(100)
+            }
+            onboardingText.font = UIFont.boldSystemFont(ofSize: 30)
+            onboardingText.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.width.equalTo(500)
+                make.centerY.equalToSuperview()
+            }
         }
+        
     }
     
     // MARK: - Action

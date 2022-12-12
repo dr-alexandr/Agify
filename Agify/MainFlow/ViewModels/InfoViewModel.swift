@@ -68,7 +68,7 @@ final class InfoViewModel: InfoViewModelProtocol {
     func setData(_ infoModel: InfoModel) {
         let array = infoModel.createArr()
         for n in 0..<infoTable.count {
-            self.infoTable[n] += array[n]
+            self.infoTable[n] = String.locString(self.infoTable[n]) + array[n]
         }
     }
     

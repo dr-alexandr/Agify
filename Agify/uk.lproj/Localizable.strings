@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  Agify
+
+  Created by Dr.Alexandr on 12.12.2022.
+  
+*/
+"Generate" = "Згенерувати";
+"Info" = "Інфо";
+"Go back" = "Назад";
+"LogOut" = "Вийти";
+"ToDo List" = "Поробки";
+"Type a name here..." = "Введіть ім'я...";
+"Agify" = "Тестове";
+"City : " = "Місто : ";
+"Region : " = "Область : ";
+"Country : " = "Країна : ";
+"Loc : " = "Координати : ";
+"Org : " = "Організація : ";
+"Postal : " = "Поштовий індекс : ";
+"Timezone : " = "Часовий пояс : ";
+"Readme : " = "Посилання : ";
+"Add Task" = "Новий запис";
+"Add" = "Додати";
+"Cancel" = "Відмінити";
+"Enter new task..." = "Введіть новий запис";
+"Login" = "Увійти";
+"Registration" = "Реєстрація";
+"Register" = "Зареєструватись";
+"Username" = "Ім'я користувача";
+"Password" = "Пароль";
+"Enter username..." = "Введіть ім'я";
+"Enter password..." = "Введіть пароль";
+"Hello! This app was made to test my coding skills. Test it!" = "Привіт! Цей додаток я створив просто для для того аби навчитись кодити. Велкам, тестуй!";
+"Start!" = "Вперед!";
+
+

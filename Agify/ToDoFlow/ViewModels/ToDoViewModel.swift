@@ -37,8 +37,8 @@ final class ToDoViewModel: ToDoViewModelProtocol {
 
     func addNewTask(compeletion: @escaping (() -> Void)) -> UIAlertController {
         var textField = UITextField()
-        let alert = UIAlertController(title: "Add Task", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+        let alert = UIAlertController(title: String.locString("Add Task"), message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: String.locString("Add"), style: .default) { (action) in
             do {
                 try self.realm.write {
                     let newTask = Task()
@@ -51,11 +51,11 @@ final class ToDoViewModel: ToDoViewModelProtocol {
             }
             DispatchQueue.main.async {compeletion()}
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: String.locString("Cancel"), style: .cancel, handler: nil)
         alert.addAction(action)
         alert.addAction(cancel)
         alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Enter new Category..."
+            alertTextField.placeholder = String.locString("Enter new task...")
             textField = alertTextField
         }
         return alert

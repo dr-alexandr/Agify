@@ -63,7 +63,7 @@ extension UIButton {
         let button = UIButton(type: .system)
         button.setTitleColor(titleColor, for: .normal)
         button.setTitle(title, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: font)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: font)
         button.backgroundColor = backgroundColor
         button.layer.cornerRadius = 25
         
@@ -144,5 +144,16 @@ extension UIViewController {
         UIView.transition(with: responseLabel, duration: 0.5, options: .transitionFlipFromRight, animations: {
             responseLabel.text = "🕵🏻"
         }, completion: nil)
+    }
+    
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+}
+
+// MARK: - String
+extension String {
+    static func locString(_ string: String) -> String {
+        return NSLocalizedString(string, comment: string)
     }
 }

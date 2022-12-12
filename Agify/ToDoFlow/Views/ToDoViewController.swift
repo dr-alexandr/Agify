@@ -18,7 +18,7 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
     let tableView = UITableView()
     let backButton = UIButton.getSFButton(sfSymbol: "arrow.left.circle.fill")
     let addButton = UIButton.getSFButton(sfSymbol: "plus.circle.fill")
-    let titleLabel = UILabel.getDefaultLabel(text: "ToDo List", font: 25)
+    let titleLabel = UILabel.getDefaultLabel(text: String.locString("ToDo List"), font: 25)
     
     let toDoViewModel: ToDoViewModelProtocol
     init(toDoViewModel: ToDoViewModelProtocol) {
@@ -30,7 +30,7 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -47,30 +47,54 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - Constraints
     private func setupLayout() {
         view.addSubview(backButton)
-        backButton.snp.makeConstraints { (make) in
-            make.height.equalTo(50)
-            make.width.equalTo(50)
-            make.leading.equalToSuperview().inset(20)
-            make.top.equalToSuperview().inset(50)
-        }
         view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.height.equalTo(50)
-            make.centerY.equalTo(backButton)
-        }
         view.addSubview(addButton)
-        addButton.snp.makeConstraints { (make) in
-            make.height.equalTo(50)
-            make.width.equalTo(50)
-            make.trailing.equalToSuperview().inset(20)
-            make.centerY.equalTo(backButton)
-        }
         view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel).inset(75)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+        if self.traitCollection.horizontalSizeClass.rawValue == 1 {
+            backButton.snp.makeConstraints { (make) in
+                make.height.equalTo(50)
+                make.width.equalTo(50)
+                make.leading.equalToSuperview().inset(20)
+                make.top.equalToSuperview().inset(50)
+            }
+            titleLabel.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.height.equalTo(50)
+                make.centerY.equalTo(backButton)
+            }
+            addButton.snp.makeConstraints { (make) in
+                make.height.equalTo(50)
+                make.width.equalTo(50)
+                make.trailing.equalToSuperview().inset(20)
+                make.centerY.equalTo(backButton)
+            }
+            tableView.snp.makeConstraints { (make) in
+                make.top.equalTo(titleLabel).inset(75)
+                make.leading.trailing.equalToSuperview()
+                make.bottom.equalToSuperview()
+            }
+        } else {
+            backButton.snp.makeConstraints { (make) in
+                make.height.width.equalTo(75)
+                make.leading.equalToSuperview().inset(50)
+                make.top.equalToSuperview().inset(75)
+            }
+            titleLabel.font = UIFont.boldSystemFont(ofSize: 35)
+            titleLabel.snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.height.equalTo(75)
+                make.centerY.equalTo(backButton)
+            }
+            addButton.snp.makeConstraints { (make) in
+                make.height.width.equalTo(75)
+                make.trailing.equalToSuperview().inset(50)
+                make.centerY.equalTo(backButton)
+            }
+            tableView.snp.makeConstraints { (make) in
+                make.top.equalTo(titleLabel).inset(100)
+                make.leading.trailing.equalToSuperview().inset(200)
+                make.bottom.equalToSuperview()
+            }
         }
     }
     
@@ -110,6 +134,9 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell")
         cell = toDoViewModel.getCell(indexPath: indexPath)
+        if self.traitCollection.horizontalSizeClass.rawValue != 1 {
+            cell?.textLabel?.font = UIFont.systemFont(ofSize: 30)
+        }
         return cell!
     }
     
