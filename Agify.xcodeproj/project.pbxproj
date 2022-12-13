@@ -27,6 +27,8 @@
 		E24AA330291CF94500784E8B /* LaunchInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24AA32F291CF94500784E8B /* LaunchInstructor.swift */; };
 		E263629D2923A28F001EB14C /* ToDoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E263629C2923A28F001EB14C /* ToDoCoordinator.swift */; };
 		E26362A82923A85B001EB14C /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26362A72923A85B001EB14C /* ToDoViewController.swift */; };
+		E2719F542949002200B5E5FA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2719F532949002200B5E5FA /* LoginViewModel.swift */; };
+		E2719F582949003A00B5E5FA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2719F572949003A00B5E5FA /* RegisterViewModel.swift */; };
 		E279722E29101DCA000BA931 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279722D29101DCA000BA931 /* NetworkManager.swift */; };
 		E2879C9E2912672E00629CD8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2879C9D2912672E00629CD8 /* Logger.swift */; };
 		E2879CA229126CC000629CD8 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2879CA129126CC000629CD8 /* InfoViewController.swift */; };
@@ -64,6 +66,8 @@
 		E24AA32F291CF94500784E8B /* LaunchInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInstructor.swift; sourceTree = "<group>"; };
 		E263629C2923A28F001EB14C /* ToDoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCoordinator.swift; sourceTree = "<group>"; };
 		E26362A72923A85B001EB14C /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
+		E2719F532949002200B5E5FA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E2719F572949003A00B5E5FA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		E279722D29101DCA000BA931 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E2879C9D2912672E00629CD8 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = "../../../../Swift & Xcode Stuff/Logger.swift"; sourceTree = "<group>"; };
 		E2879CA129126CC000629CD8 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				E2343169291E45F2003F9538 /* Views */,
+				E2719F522948FFFC00B5E5FA /* Models */,
 			);
 			path = LoginFlow;
 			sourceTree = "<group>";
@@ -240,6 +245,15 @@
 				E2996F6529279FE200D456BE /* ToDoViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E2719F522948FFFC00B5E5FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E2719F532949002200B5E5FA /* LoginViewModel.swift */,
+				E2719F572949003A00B5E5FA /* RegisterViewModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E2BBA354290BBF3F007AA03E = {
@@ -414,6 +428,7 @@
 				E263629D2923A28F001EB14C /* ToDoCoordinator.swift in Sources */,
 				E23DB63129150CA30045F58C /* ApplicationCoordinator.swift in Sources */,
 				E2879CA229126CC000629CD8 /* InfoViewController.swift in Sources */,
+				E2719F542949002200B5E5FA /* LoginViewModel.swift in Sources */,
 				E24AA32A291CF17400784E8B /* OnboardingViewController.swift in Sources */,
 				E2996F6629279FE200D456BE /* ToDoViewModel.swift in Sources */,
 				E23DB61E29144AC40045F58C /* ViewControllerFactory.swift in Sources */,
@@ -423,6 +438,7 @@
 				E2343170291E4626003F9538 /* LoginViewController.swift in Sources */,
 				E2E204EC2922558500A0EF0A /* KeychainManager.swift in Sources */,
 				E219D3B029113990007D730F /* Models.swift in Sources */,
+				E2719F582949003A00B5E5FA /* RegisterViewModel.swift in Sources */,
 				E219D3A729113346007D730F /* NetworkError.swift in Sources */,
 				E20D073C290FD049005880B9 /* ViewModel.swift in Sources */,
 				E2E204E829223A3C00A0EF0A /* RegisterViewController.swift in Sources */,

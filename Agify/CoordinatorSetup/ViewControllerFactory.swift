@@ -10,12 +10,12 @@ import Foundation
 class ViewControllerFactory {
     
     func createLoginViewController() -> LoginViewController {
-        let vc = LoginViewController()
+        let vc = LoginViewController(viewModel: LoginViewModel())
         return vc
     }
     
     func createRegisterViewController() -> RegisterViewController {
-        let vc = RegisterViewController()
+        let vc = RegisterViewController(viewModel: RegisterViewModel())
         return vc
     }
     

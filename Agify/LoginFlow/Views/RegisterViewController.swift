@@ -23,11 +23,16 @@ final class RegisterViewController: UIViewController {
     private  let passwordTextfield = UITextField.getDefaultTextField(placeholder: String.locString("Enter password..."), textAlignment: .left, font: 20, textColor: .brown, cornerRadius: 25, borderStyle: .roundedRect, secure: true)
     private let logo = UIImage(named: "Icon")
     private let logoView = UIImageView()
+    private var viewModel: RegisterViewModelProtocol
     
-    private var validMail = false
-    private var validPassword = false
-    private let emailPattern = #"^\S+@\S+\.\S+$"#
-    private let passwordPattern = #"(?=.{8,})"# + #"(?=.*[A-Z])"# + #"(?=.*[a-z])"# + #"(?=.*\d)"#
+    init(viewModel: RegisterViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -151,16 +156,9 @@ final class RegisterViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func registerPressed() {
-        guard validMail == true && validPassword == true else {return}
-        guard let safePassword = passwordTextfield.text?.data(using: .utf8) else {return}
-        do {
-            try KeychainManager.save(service: "Agify",
-                                     account: usernameTextfield.text!,
-                                     password: safePassword)
-            self.register?()
-        } catch {
-            print(error)
-        }
+        guard viewModel.validCredentials() else {return}
+        guard let email = usernameTextfield.text, let password = passwordTextfield.text else {return}
+        viewModel.saveCredentials(email: email, password: password, completion: register)
     }
     
     @objc private func goToLoginPressed() {
@@ -168,24 +166,12 @@ final class RegisterViewController: UIViewController {
     }
     
     @objc private func checkLogin(_ textfield: UITextField) {
-        let result = textfield.text?.range(of: emailPattern, options: .regularExpression)
-        if result != nil {
-            validMail = true
-            textfield.textColor = UIColor(named: "LightBlue")
-        } else {
-            validMail = false
-            textfield.textColor = UIColor(named: "Deny")
-        }
+        guard let login = textfield.text else {return}
+        textfield.textColor = viewModel.checkLogin(login)
     }
     
     @objc private func checkPassword(_ textfield: UITextField) {
-        let result = textfield.text?.range(of: passwordPattern, options: .regularExpression)
-        if result != nil {
-            validPassword = true
-            textfield.textColor = UIColor(named: "LightBlue")
-        } else {
-            validPassword = false
-            textfield.textColor = UIColor(named: "Deny")
-        }
+        guard let password = textfield.text else {return}
+        textfield.textColor = viewModel.checkPassword(password)
     }
 }
