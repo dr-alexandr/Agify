@@ -40,7 +40,7 @@ class OnboardingViewController: UIViewController {
         view.addSubview(onboardingButton)
         view.addSubview(onboardingText)
         
-        if self.traitCollection.horizontalSizeClass.rawValue == 1 {
+        if compactWidth(self) {
             onboardingButton.snp.makeConstraints { (make) in
                 make.centerX.equalToSuperview()
                 make.trailing.leading.equalToSuperview().inset(50)

@@ -75,7 +75,7 @@ final class InfoViewCotroller: UIViewController, UITableViewDelegate, UITableVie
         view.addSubview(backButton)
         view.addSubview(loader)
         
-        if self.traitCollection.horizontalSizeClass.rawValue == 1 {
+        if compactWidth(self) {
             tableView.snp.makeConstraints { (make) in
                 make.top.equalToSuperview()
                 make.leading.trailing.equalToSuperview()
@@ -144,7 +144,7 @@ final class InfoViewCotroller: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableCell = UITableViewCell.getDefaultTableCell()
         tableCell.textLabel?.text = String.locString(infoViewModel.getCellTitle(by: indexPath))
-        if self.traitCollection.horizontalSizeClass.rawValue != 1 {
+        if !compactWidth(self) {
             tableCell.textLabel?.font = UIFont.systemFont(ofSize: 25)
         }
         return tableCell

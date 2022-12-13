@@ -27,7 +27,7 @@
 "Login" = "Увійти";
 "Registration" = "Реєстрація";
 "Register" = "Зареєструватись";
-"Username" = "Ім'я користувача";
+"Email" = "Ел. пошта";
 "Password" = "Пароль";
 "Enter username..." = "Введіть ім'я";
 "Enter password..." = "Введіть пароль";

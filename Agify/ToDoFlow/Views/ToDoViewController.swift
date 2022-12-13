@@ -50,7 +50,7 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
         view.addSubview(titleLabel)
         view.addSubview(addButton)
         view.addSubview(tableView)
-        if self.traitCollection.horizontalSizeClass.rawValue == 1 {
+        if compactWidth(self) {
             backButton.snp.makeConstraints { (make) in
                 make.height.equalTo(50)
                 make.width.equalTo(50)
@@ -134,7 +134,7 @@ final class ToDoViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell")
         cell = toDoViewModel.getCell(indexPath: indexPath)
-        if self.traitCollection.horizontalSizeClass.rawValue != 1 {
+        if !compactWidth(self) {
             cell?.textLabel?.font = UIFont.systemFont(ofSize: 30)
         }
         return cell!

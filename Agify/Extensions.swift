@@ -53,13 +53,14 @@ extension UIButton {
     static func getDefaultButton(title: String,
                                 font: CGFloat = 30,
                                 backgroundColor: UIColor = UIColor(named: "LightBlue") ?? .brown,
-                                titleColor: UIColor = .white, underline: Float = 0 ) -> UIButton {
+                                titleColor: UIColor = .white, underline: Float = 0, enabled: Bool = true ) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitleColor(titleColor, for: .normal)
         button.setTitle(title, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: font)
         button.backgroundColor = backgroundColor
         button.layer.cornerRadius = 25
+        button.isEnabled = enabled
         
         let attributedString = NSAttributedString(string: NSLocalizedString(button.currentTitle ?? "Button", comment: ""), attributes:[NSAttributedString.Key.underlineStyle: underline])
         button.setAttributedTitle(attributedString, for: .normal)
@@ -142,6 +143,11 @@ extension UIViewController {
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    func compactWidth(_ controller: UIViewController) -> Bool {
+        guard controller.traitCollection.horizontalSizeClass.rawValue == 1 else {return false}
+        return true
     }
 }
 

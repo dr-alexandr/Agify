@@ -100,8 +100,7 @@ final class ViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(loader)
         
-        // if width is compact
-        if self.traitCollection.horizontalSizeClass.rawValue == 1 {
+        if compactWidth(self) {
             responseLabel.snp.makeConstraints { make in
                 make.centerX.equalToSuperview()
                 make.centerY.equalToSuperview()

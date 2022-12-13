@@ -15,14 +15,19 @@ final class RegisterViewController: UIViewController {
     var goToLoginPage: (() -> Void)?
     
     // MARK: - UIElements
-    let button = UIButton.getDefaultButton(title: "Register")
-    let goToLoginButton = UIButton.getDefaultButton(title: "Login", font: 17, backgroundColor: UIColor(named: "LightBrown") ?? .gray, titleColor: .brown, underline: 1.0)
-    let usernameLabel = UILabel.getDefaultLabel(text: String.locString("Username"))
-    let usernameTextfield = UITextField.getDefaultTextField(placeholder: String.locString("Enter username..."), textAlignment: .left, font: 20, textColor: .brown, cornerRadius: 25, borderStyle: .roundedRect)
-    let passwordLabel = UILabel.getDefaultLabel(text: String.locString("Password"))
-    let passwordTextfield = UITextField.getDefaultTextField(placeholder: String.locString("Enter password..."), textAlignment: .left, font: 20, textColor: .brown, cornerRadius: 25, borderStyle: .roundedRect, secure: true)
-    let logo = UIImage(named: "Icon")
-    let logoView = UIImageView()
+    private let button = UIButton.getDefaultButton(title: "Register")
+    private let goToLoginButton = UIButton.getDefaultButton(title: "Login", font: 17, backgroundColor: UIColor(named: "LightBrown") ?? .gray, titleColor: .brown, underline: 1.0)
+    private let usernameLabel = UILabel.getDefaultLabel(text: String.locString("Email"))
+    private let usernameTextfield = UITextField.getDefaultTextField(placeholder: String.locString("Enter username..."), textAlignment: .left, font: 20, textColor: .brown, cornerRadius: 25, borderStyle: .roundedRect)
+    private let passwordLabel = UILabel.getDefaultLabel(text: String.locString("Password"))
+    private  let passwordTextfield = UITextField.getDefaultTextField(placeholder: String.locString("Enter password..."), textAlignment: .left, font: 20, textColor: .brown, cornerRadius: 25, borderStyle: .roundedRect, secure: true)
+    private let logo = UIImage(named: "Icon")
+    private let logoView = UIImageView()
+    
+    private var validMail = false
+    private var validPassword = false
+    private let emailPattern = #"^\S+@\S+\.\S+$"#
+    private let passwordPattern = #"(?=.{8,})"# + #"(?=.*[A-Z])"# + #"(?=.*[a-z])"# + #"(?=.*\d)"#
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -40,6 +45,8 @@ final class RegisterViewController: UIViewController {
         view.backgroundColor = UIColor(named: "LightBrown")
         button.addTarget(self, action: #selector(registerPressed), for: .touchUpInside)
         goToLoginButton.addTarget(self, action: #selector(goToLoginPressed), for: .touchUpInside)
+        usernameTextfield.addTarget(self, action: #selector(self.checkLogin(_:)), for: .editingChanged)
+        passwordTextfield.addTarget(self, action: #selector(self.checkPassword(_:)), for: .editingChanged)
     }
     
     // MARK: - Constraints
@@ -53,7 +60,7 @@ final class RegisterViewController: UIViewController {
         view.addSubview(logoView)
         logoView.image = logo
         
-        if self.traitCollection.horizontalSizeClass.rawValue == 1 {
+        if compactWidth(self) {
             passwordTextfield.snp.makeConstraints { (make) in
                 make.centerX.equalToSuperview()
                 make.centerY.equalToSuperview()
@@ -144,8 +151,7 @@ final class RegisterViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func registerPressed() {
-        guard usernameTextfield.text != "" else {return}
-        guard passwordTextfield.text != "" else {return}
+        guard validMail == true && validPassword == true else {return}
         guard let safePassword = passwordTextfield.text?.data(using: .utf8) else {return}
         do {
             try KeychainManager.save(service: "Agify",
@@ -159,5 +165,27 @@ final class RegisterViewController: UIViewController {
     
     @objc private func goToLoginPressed() {
         self.goToLoginPage?()
+    }
+    
+    @objc private func checkLogin(_ textfield: UITextField) {
+        let result = textfield.text?.range(of: emailPattern, options: .regularExpression)
+        if result != nil {
+            validMail = true
+            textfield.textColor = UIColor(named: "LightBlue")
+        } else {
+            validMail = false
+            textfield.textColor = UIColor(named: "Deny")
+        }
+    }
+    
+    @objc private func checkPassword(_ textfield: UITextField) {
+        let result = textfield.text?.range(of: passwordPattern, options: .regularExpression)
+        if result != nil {
+            validPassword = true
+            textfield.textColor = UIColor(named: "LightBlue")
+        } else {
+            validPassword = false
+            textfield.textColor = UIColor(named: "Deny")
+        }
     }
 }
