@@ -11,7 +11,7 @@
 		E20D073C290FD049005880B9 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D073B290FD049005880B9 /* ViewModel.swift */; };
 		E219D3A729113346007D730F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3A629113346007D730F /* NetworkError.swift */; };
 		E219D3B029113990007D730F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3AF29113990007D730F /* Models.swift */; };
-		E219D3B4291153F8007D730F /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3B3291153F8007D730F /* ControllerExtensions.swift */; };
+		E219D3B4291153F8007D730F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219D3B3291153F8007D730F /* Extensions.swift */; };
 		E2343166291E4542003F9538 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2343165291E4542003F9538 /* LoginCoordinator.swift */; };
 		E2343170291E4626003F9538 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234316F291E4626003F9538 /* LoginViewController.swift */; };
 		E23DB61A2914491C0045F58C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DB6192914491C0045F58C /* Coordinator.swift */; };
@@ -48,7 +48,7 @@
 		E20D073B290FD049005880B9 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		E219D3A629113346007D730F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E219D3AF29113990007D730F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		E219D3B3291153F8007D730F /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
+		E219D3B3291153F8007D730F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E2343165291E4542003F9538 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		E234316F291E4626003F9538 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E23DB6192914491C0045F58C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 			children = (
 				E2BBA360290BBF3F007AA03E /* AppDelegate.swift */,
 				E2BBA362290BBF3F007AA03E /* SceneDelegate.swift */,
-				E219D3B3291153F8007D730F /* ControllerExtensions.swift */,
+				E219D3B3291153F8007D730F /* Extensions.swift */,
 				E2343168291E45DD003F9538 /* LoginFlow */,
 				E24AA332291CFF9000784E8B /* MainFlow */,
 				E26362A42923A819001EB14C /* ToDoFlow */,
@@ -407,7 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23DB62E291452CA0045F58C /* MainCoordinator.swift in Sources */,
-				E219D3B4291153F8007D730F /* ControllerExtensions.swift in Sources */,
+				E219D3B4291153F8007D730F /* Extensions.swift in Sources */,
 				E2BBA365290BBF3F007AA03E /* ViewController.swift in Sources */,
 				E2BBA361290BBF3F007AA03E /* AppDelegate.swift in Sources */,
 				E279722E29101DCA000BA931 /* NetworkManager.swift in Sources */,

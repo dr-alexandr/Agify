@@ -39,7 +39,6 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setRootNavControl()
         setupLayout()
         bind()
     }
