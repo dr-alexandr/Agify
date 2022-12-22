@@ -21,7 +21,7 @@ final class InfoViewCotroller: UIViewController, UITableViewDelegate, UITableVie
     var goBack: (() -> Void)?
     var logout: (() -> Void)?
     
-    private var infoViewModel: InfoViewModelProtocol
+    var infoViewModel: InfoViewModelProtocol
     init(infoViewModel: InfoViewModelProtocol) {
         self.infoViewModel = infoViewModel
         super.init(nibName: nil, bundle: nil)

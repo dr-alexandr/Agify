@@ -13,11 +13,13 @@ protocol InfoViewModelProtocol {
     func setData(_ infoModel: InfoModel)
     func getCellTitle(by indexPath: IndexPath) -> String
     
+    var networkManager: NetworkManagerProtocol { get set }
     var onCompletion: (() -> Void )? { get set }
     var numberOfRows: Int { get }
 }
 
 final class InfoViewModel: InfoViewModelProtocol {
+    var networkManager: NetworkManagerProtocol
     
     private var infoTable: [String] = [ "IP : ", "City : ", "Region : ",
                                 "Country : ", "Loc : ", "Org : ",
@@ -26,8 +28,6 @@ final class InfoViewModel: InfoViewModelProtocol {
         infoTable.count
     }
     var onCompletion: (() -> Void)?
-    
-    private let networkManager: NetworkManagerProtocol
     
     init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager

@@ -172,10 +172,12 @@ private func buildURL(endpoint: API) -> URLComponents {
 
 protocol NetworkManagerProtocol {
     func request<T: Decodable>(endpoint: API, completion: @escaping (Result<T, Error>) -> Void)
+    var task: URLSessionDataTask { get set }
 }
 
 final class NetworkManager: NetworkManagerProtocol {
     
+    var task = URLSessionDataTask()
     func request<T: Decodable>(endpoint: API, completion: @escaping (Result<T, Error>) -> Void) {
         let components = buildURL(endpoint: endpoint)
         guard let url = components.url else {
@@ -185,7 +187,7 @@ final class NetworkManager: NetworkManagerProtocol {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = endpoint.method.rawValue
         let session = URLSession(configuration: .default)
-        let dataTask = session.dataTask(with: urlRequest) {
+        task = session.dataTask(with: urlRequest) {
             data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -200,13 +202,13 @@ final class NetworkManager: NetworkManagerProtocol {
                     completion(.success(responseObject))
                 }
             } else {
-                let error = NSError(domain: "com.AryamanSharda",
+                let error = NSError(domain: "com.dr.alexandr",
                                     code: 200,
                                     userInfo: [NSLocalizedDescriptionKey: "Failed"])
                 completion(.failure(error))
             }
         }
-        dataTask.resume()
+        task.resume()
     }
     
     deinit {

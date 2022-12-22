@@ -34,7 +34,8 @@ final class MainCoordinator: BaseCoordinator, CoordinatorFinishOutput {
     
     private func showInfoViewController() {
         let vc = self.viewControllerFactory.createInfoViewController()
-        vc.goBack = { [unowned self] in
+        vc.goBack = { [unowned self, unowned vc] in
+            vc.infoViewModel.networkManager.task.cancel()
             self.router.popModule()
         }
         vc.logout = { [unowned self] in

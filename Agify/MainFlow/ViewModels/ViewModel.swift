@@ -10,10 +10,11 @@ import UIKit
 
 protocol ViewModelProtocol {
     func getAge(name: String,
-                onComplete: @escaping (SearchModel) -> Void)
-    
+                onComplete: @escaping (SearchModel) -> Void,
+                onFail: @escaping () -> Void)
     func getName(_ name: String)
     var onCompletion: ((SearchModel) -> Void )? { get set }
+    var onFailure: (() -> Void)? { get set }
     func changeLanguage() -> UIAlertController
 }
 
@@ -30,15 +31,11 @@ final class ViewModel: ViewModelProtocol {
     }
     
     var onCompletion: ((SearchModel) -> Void)?
-    func getName(_ name: String) {
-        getAge(name: name) { [weak self] searchModel in
-            guard let self = self else { return }
-            self.onCompletion?(searchModel)
-        }
-    }
+    var onFailure: (() -> Void)?
     
     func getAge(name: String,
-                onComplete: @escaping (SearchModel) -> Void) {
+                onComplete: @escaping (SearchModel) -> Void,
+                onFail: @escaping () -> Void) {
         let endpoint = AgifyAPI.getAgebyName(name: name)
         networkManager.request(endpoint: endpoint) {
             (result: Result<SearchModelDTO, Error>) in
@@ -48,8 +45,19 @@ final class ViewModel: ViewModelProtocol {
                 let searchModel = DTOMapper.map(response)
                 onComplete(searchModel)
             case .failure(let error):
+                onFail()
                 Log.e(error.localizedDescription)
             }
+        }
+    }
+    
+    func getName(_ name: String) {
+        getAge(name: name) { [weak self] searchModel in
+            guard let self = self else { return }
+            self.onCompletion?(searchModel)
+        } onFail: { [weak self] in
+            guard let self = self else { return }
+            self.onFailure?()
         }
     }
     

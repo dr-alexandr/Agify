@@ -74,6 +74,14 @@ final class ViewController: UIViewController {
             self.responseLabel.text = ("\(searchModel.age)")
             self.responseLabel.isHidden = false
         }
+        viewModel.onFailure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.loader.stopAnimating()
+                guard let self = self else { return }
+                self.resetAnimated(self.responseLabel)
+                self.responseLabel.isHidden = false
+            }
+        }
     }
     
     private func setupUI() {
